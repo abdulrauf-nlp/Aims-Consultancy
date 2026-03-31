@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIMS | Abdulrauf Institute of Mind Sciences</title>
+    <title>Abdulrauf | Mind Sciences Specialist</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { 
-            --deep-ocean: #263238; 
+            --deep-ocean: #00332e; 
             --forest-heal: #004d40; 
             --text-main: #37474f; 
             --soft-gray: #f8faf9; 
@@ -19,34 +19,37 @@
         
         body { font-family: 'DM Sans', sans-serif; background-color: var(--soft-gray); margin: 0; color: var(--text-main); line-height: 1.6; }
 
-        /* Header & Hero */
+        /* Updated Header - No Text, Bio shifted up */
         header { 
-            background: linear-gradient(135deg, var(--deep-ocean) 0%, var(--forest-heal) 100%); 
-            padding: 60px 20px 80px 20px; 
+            background: linear-gradient(135deg, #0d2e2a 0%, var(--forest-heal) 100%); 
+            padding: 80px 20px 100px 20px; 
             text-align: center; 
             border-bottom-left-radius: 50px; 
             border-bottom-right-radius: 50px; 
         }
-        .logo-text { font-size: 42px; font-weight: 700; color: #fff; letter-spacing: -2px; }
-        .logo-sub { font-size: 12px; text-transform: uppercase; color: rgba(255,255,255,0.8); letter-spacing: 2px; }
 
-        .container { max-width: 480px; margin: -50px auto 0 auto; padding: 0 20px 120px 20px; box-sizing: border-box; }
+        .container { max-width: 480px; margin: -100px auto 0 auto; padding: 0 20px 120px 20px; box-sizing: border-box; }
 
-        /* Bio Section */
+        /* Bio Section - Shifted Higher */
         .bio-card {
-            background: var(--white); border-radius: 30px; padding: 25px; text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 25px;
+            background: var(--white); border-radius: 30px; padding: 30px 25px; text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin-bottom: 25px;
         }
-        .bio-img { width: 90px; height: 90px; border-radius: 50%; background: #eee; margin: -60px auto 15px auto; border: 5px solid var(--white); object-fit: cover; }
-        .bio-card h3 { margin: 5px 0; color: var(--deep-ocean); }
-        .bio-card p { font-size: 14px; color: #607d8b; margin: 0; }
+        .bio-img { 
+            width: 100px; height: 100px; border-radius: 50%; background: #f0f0f0; 
+            margin: -80px auto 20px auto; border: 6px solid var(--white); 
+            object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .bio-card h3 { margin: 10px 0; color: var(--deep-ocean); font-size: 24px; }
+        .bio-card p { font-size: 15px; color: #546e7a; margin: 0; line-height: 1.5; }
 
         /* Benefit Cards */
-        .section-title { font-size: 14px; font-weight: 700; color: var(--forest-heal); text-transform: uppercase; margin: 25px 0 15px 10px; letter-spacing: 1px; }
+        .section-title { font-size: 14px; font-weight: 700; color: var(--forest-heal); text-transform: uppercase; margin: 30px 0 15px 10px; letter-spacing: 1px; }
+        
         .card { 
-            background: var(--white); border-radius: 25px; padding: 20px; margin-bottom: 15px; 
+            background: var(--white); border-radius: 25px; padding: 22px; margin-bottom: 15px; 
             display: flex; align-items: center; gap: 15px; cursor: pointer; transition: 0.3s;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.02); box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
         .card:active { transform: scale(0.97); }
         .card-icon { width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
@@ -54,24 +57,19 @@
         .icon-hypno { background: #ede7f6; color: #512da8; }
         .icon-psycho { background: #fff3e0; color: #e65100; }
         
-        .card-text b { display: block; font-size: 16px; color: var(--deep-ocean); }
+        .card-text b { display: block; font-size: 17px; color: var(--deep-ocean); }
         .card-text span { font-size: 12px; color: #78909c; }
 
-        /* Testimonials Slider (Simple) */
-        .testimonial-box { background: #fff; padding: 20px; border-radius: 25px; margin-bottom: 25px; border-left: 5px solid var(--gold); }
-        .testi-text { font-style: italic; font-size: 14px; color: #546e7a; }
-        .testi-user { font-size: 12px; font-weight: 700; color: var(--deep-ocean); margin-top: 10px; display: block; }
-
         /* Quiz Section */
-        .quiz-box { background: var(--deep-ocean); color: white; padding: 25px; border-radius: 30px; margin-bottom: 25px; text-align: center; }
-        .quiz-box h4 { margin-top: 0; color: #80deea; }
+        .quiz-box { background: var(--deep-ocean); color: white; padding: 30px 25px; border-radius: 30px; margin: 30px 0; text-align: center; }
+        .quiz-box h4 { margin-top: 0; color: #80deea; font-size: 18px; }
 
         /* FAQ Accordion */
-        .faq-item { background: #fff; border-radius: 15px; padding: 15px; margin-bottom: 10px; cursor: pointer; }
+        .faq-item { background: #fff; border-radius: 15px; padding: 18px; margin-bottom: 12px; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
         .faq-question { font-weight: 700; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
         .faq-answer { font-size: 13px; color: #607d8b; display: none; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px; }
 
-        /* UI Elements */
+        /* Forms & Interactive Sections */
         .form-section { display: none; background: #fff; padding: 30px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); animation: fadeInUp 0.4s; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
@@ -79,9 +77,7 @@
         .btn-main { background: var(--forest-heal); color: white; padding: 18px; width: 100%; border: none; border-radius: 15px; font-weight: 700; font-size: 16px; cursor: pointer; }
         .btn-outline { background: transparent; border: 2px solid #80deea; color: #80deea; padding: 12px; border-radius: 12px; font-weight: 700; cursor: pointer; width: 100%; margin-top: 10px; }
 
-        #success-screen { display: none; text-align: center; padding: 40px 20px; }
-        
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; display: flex; justify-content: space-around; padding: 15px 0 30px 0; border-top: 1px solid #eee; border-radius: 25px 25px 0 0; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; display: flex; justify-content: space-around; padding: 15px 0 35px 0; border-top: 1px solid #eee; border-radius: 30px 30px 0 0; box-shadow: 0 -5px 20px rgba(0,0,0,0.05); }
         .nav-link { text-align: center; text-decoration: none; color: #b0bec5; font-size: 10px; font-weight: 700; flex: 1; }
         .nav-link i { font-size: 20px; margin-bottom: 4px; }
     </style>
@@ -89,9 +85,7 @@
 <body>
 
 <header>
-    <div class="logo-text">AIMS</div>
-    <div class="logo-sub">Abdulrauf Institute of Mind Sciences</div>
-</header>
+    </header>
 
 <div class="container">
     <div id="home-screen">
@@ -117,18 +111,8 @@
 
         <div class="quiz-box">
             <h4>Not sure where to start?</h4>
-            <p style="font-size: 13px; opacity: 0.9;">Take a 30-second assessment to find the right therapy for you.</p>
+            <p style="font-size: 13px; opacity: 0.9;">Take our assessment to find the right path for your growth.</p>
             <button class="btn-outline" onclick="startQuiz()">Start Assessment</button>
-        </div>
-
-        <div class="section-title">Success Stories</div>
-        <div class="testimonial-box">
-            <div class="testi-text">"The NLP session completely shifted my perspective on my career blocks. I feel unstoppable now."</div>
-            <span class="testi-user">— Sarah K., Entrepreneur</span>
-        </div>
-        <div class="testimonial-box">
-            <div class="testi-text">"I struggled with sleep for years. Two sessions of Hypnotherapy did what meds couldn't."</div>
-            <span class="testi-user">— Ahmed R., Manager</span>
         </div>
 
         <div class="section-title">Common Questions</div>
@@ -145,17 +129,17 @@
             <div class="faq-answer">Yes, NLP and Hypnotherapy are highly effective via Zoom or Video Call.</div>
         </div>
 
-        <p style="text-align:center; font-size: 10px; color: #b0bec5; margin-top: 30px;">© 2026 AIMS BY ABDULRAUF</p>
+        <p style="text-align:center; font-size: 10px; color: #b0bec5; margin-top: 40px; text-transform: uppercase;">AIMS • Abdulrauf Institute of Mind Sciences</p>
     </div>
 
     <div id="quiz-screen" class="form-section">
-        <button class="btn-back" onclick="showHome()" style="border:none; background:none; color:#999; cursor:pointer; margin-bottom:20px;"><i class="fas fa-arrow-left"></i> BACK</button>
-        <h3 style="text-align:center;">Quick Assessment</h3>
+        <button onclick="showHome()" style="border:none; background:none; color:#999; cursor:pointer; margin-bottom:20px;"><i class="fas fa-arrow-left"></i> BACK</button>
+        <h3 style="text-align:center;">Assessment</h3>
         <p id="quiz-question" style="text-align:center; font-weight:500;">What is your primary goal?</p>
         <div id="quiz-options">
-            <button class="btn-main" style="margin-bottom:10px; background:#f5f5f5; color:#333;" onclick="quizResult('Hypnotherapy')">Overcoming a Habit/Fear</button>
-            <button class="btn-main" style="margin-bottom:10px; background:#f5f5f5; color:#333;" onclick="quizResult('NLP Breakthrough')">Peak Performance & Career</button>
-            <button class="btn-main" style="margin-bottom:10px; background:#f5f5f5; color:#333;" onclick="quizResult('Psychotherapy')">Deep Emotional Healing</button>
+            <button class="btn-main" style="margin-bottom:12px; background:#f5f5f5; color:#333;" onclick="quizResult('Hypnotherapy')">Overcoming a Habit/Fear</button>
+            <button class="btn-main" style="margin-bottom:12px; background:#f5f5f5; color:#333;" onclick="quizResult('NLP Breakthrough')">Peak Performance & Career</button>
+            <button class="btn-main" style="margin-bottom:12px; background:#f5f5f5; color:#333;" onclick="quizResult('Psychotherapy')">Deep Emotional Healing</button>
         </div>
     </div>
 
@@ -182,17 +166,10 @@
             <option value="In-Person (Clinic)">In-Person (Clinic)</option>
         </select>
         
-        <label style="font-size:11px; font-weight:700; color:#999;">HOW CAN I HELP YOU?</label>
-        <textarea id="client-goal" rows="3" placeholder="Briefly describe your concern..."></textarea>
+        <label style="font-size:11px; font-weight:700; color:#999;">DESCRIBE YOUR CONCERN</label>
+        <textarea id="client-goal" rows="3" placeholder="How can I help you?"></textarea>
         
-        <button class="btn-main" onclick="submitBooking()">Send Request to WhatsApp</button>
-    </div>
-
-    <div id="success-screen" class="form-section" style="display:none;">
-        <i class="fas fa-check-circle" style="font-size: 60px; color: var(--forest-heal);"></i>
-        <h2>Request Prepared!</h2>
-        <p>Your details have been saved. Please complete the process by sending the message on WhatsApp.</p>
-        <button class="btn-main" onclick="showHome()">Back to Home</button>
+        <button class="btn-main" onclick="submitBooking()">Open WhatsApp</button>
     </div>
 </div>
 
@@ -210,10 +187,8 @@
         const answer = el.querySelector('.faq-answer');
         const icon = el.querySelector('i');
         const isVisible = answer.style.display === 'block';
-        
         document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
         document.querySelectorAll('.faq-item i').forEach(i => i.style.transform = 'rotate(0deg)');
-
         if(!isVisible) {
             answer.style.display = 'block';
             icon.style.transform = 'rotate(180deg)';
@@ -235,18 +210,16 @@
         document.getElementById('booking-form').style.display = 'block';
         document.getElementById('service-title').innerText = serviceName;
         document.getElementById('hidden-service').value = serviceName;
-        
-        const suggestion = document.getElementById('quiz-suggestion');
-        suggestion.innerText = fromQuiz ? "Based on your goals, I recommend " + serviceName : "";
+        document.getElementById('quiz-suggestion').innerText = fromQuiz ? "Recommendation: " + serviceName : "";
 
         const box = document.getElementById('logic-box');
         const label = document.getElementById('logic-label');
         if(serviceName === 'Hypnotherapy') {
             box.style.display = 'block'; label.innerText = "Have you experienced hypnosis before?";
         } else if (serviceName === 'NLP Breakthrough') {
-            box.style.display = 'block'; label.innerText = "What is your biggest mental hurdle right now?";
+            box.style.display = 'block'; label.innerText = "What is your main mental hurdle?";
         } else if (serviceName === 'Psychotherapy') {
-            box.style.display = 'block'; label.innerText = "Is this your first time seeking therapy?";
+            box.style.display = 'block'; label.innerText = "Is this your first time in therapy?";
         } else { box.style.display = 'none'; }
         window.scrollTo(0,0);
     }
@@ -265,17 +238,11 @@
         const goal = document.getElementById('client-goal').value;
         const extra = document.getElementById('logic-answer').value || "N/A";
 
-        if(!name || !phone) { alert("Please fill your Name & Phone."); return; }
+        if(!name || !phone) { alert("Name and Phone are required."); return; }
 
-        // Send to Google Sheets (Silent)
         fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ service, name, phone, mode, goal, extra }) });
 
-        // Format WhatsApp Message
-        const msg = encodeURIComponent(`*✨ NEW BOOKING REQUEST ✨*\n\n*Service:* ${service}\n*Client:* ${name}\n*Contact:* ${phone}\n*Mode:* ${mode}\n*Note:* ${extra}\n\n*Goal:* ${goal}`);
-        
-        document.getElementById('booking-form').style.display = 'none';
-        document.getElementById('success-screen').style.display = 'block';
-        
+        const msg = encodeURIComponent(`*NEW BOOKING REQUEST*\n\n*Service:* ${service}\n*Client:* ${name}\n*Contact:* ${phone}\n*Mode:* ${mode}\n*Note:* ${extra}\n*Goal:* ${goal}`);
         window.open(`https://wa.me/${MY_WHATSAPP}?text=${msg}`, '_blank');
     }
 </script>
