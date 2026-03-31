@@ -7,37 +7,110 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --deep-ocean: #263238; --forest-heal: #004d40; --text-main: #37474f; --soft-gray: #eceff1; --white: #ffffff; --accent: #d81b60; }
-        body { font-family: 'DM Sans', sans-serif; background-color: var(--soft-gray); margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
-        header { background: linear-gradient(135deg, var(--deep-ocean) 0%, var(--forest-heal) 100%); padding: 40px 20px; text-align: center; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; }
-        .logo-text { font-size: 32px; font-weight: 700; color: #fff; letter-spacing: -1px; }
-        .logo-sub { font-size: 10px; text-transform: uppercase; color: rgba(255,255,255,0.7); display: block; margin-top: 5px; }
-        .container { max-width: 450px; margin: -30px auto 0 auto; padding: 20px; width: 100%; box-sizing: border-box; }
-        .card { background: var(--white); border-radius: 25px; padding: 22px; margin-bottom: 15px; display: flex; align-items: center; gap: 15px; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.04); transition: 0.3s; }
-        .card:active { transform: scale(0.97); }
-        .card-icon { width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        :root { 
+            --deep-ocean: #263238; 
+            --forest-heal: #004d40; 
+            --text-main: #37474f; 
+            --soft-gray: #f4f7f6; 
+            --white: #ffffff; 
+            --accent: #d81b60; 
+            --success: #2e7d32;
+        }
+        
+        body { 
+            font-family: 'DM Sans', sans-serif; 
+            background-color: var(--soft-gray); 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            color: var(--text-main);
+        }
+
+        header { 
+            background: linear-gradient(135deg, var(--deep-ocean) 0%, var(--forest-heal) 100%); 
+            padding: 50px 20px; 
+            text-align: center; 
+            border-bottom-left-radius: 40px; 
+            border-bottom-right-radius: 40px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .logo-text { font-size: 36px; font-weight: 700; color: #fff; letter-spacing: -1.5px; margin: 0; }
+        .logo-sub { font-size: 11px; text-transform: uppercase; color: rgba(255,255,255,0.8); display: block; margin-top: 8px; letter-spacing: 1px; }
+
+        .container { max-width: 450px; margin: -30px auto 0 auto; padding: 0 20px 100px 20px; width: 100%; box-sizing: border-box; }
+
+        /* Card Styling */
+        .card { 
+            background: var(--white); 
+            border-radius: 25px; 
+            padding: 22px; 
+            margin-bottom: 18px; 
+            display: flex; 
+            align-items: center; 
+            gap: 18px; 
+            cursor: pointer; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .card:active { transform: scale(0.96); }
+
+        .card-icon { width: 55px; height: 55px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
         .icon-nlp { background: #e0f2f1; color: #00695c; }
         .icon-hypno { background: #ede7f6; color: #512da8; }
         .icon-psycho { background: #fff3e0; color: #e65100; }
         .icon-audio { background: #fce4ec; color: #d81b60; }
-        .card-text b { display: block; font-size: 16px; color: var(--deep-ocean); }
-        .card-text span { font-size: 12px; color: #607d8b; }
+
+        .card-text b { display: block; font-size: 17px; color: var(--deep-ocean); margin-bottom: 2px; }
+        .card-text span { font-size: 13px; color: #78909c; line-height: 1.4; }
+
+        /* Forms & Sections */
         .form-section { display: none; background: #fff; padding: 30px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); animation: fadeInUp 0.4s ease; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        label { display: block; font-size: 11px; font-weight: 700; color: #90a4ae; margin-bottom: 8px; text-transform: uppercase; }
-        input, select, textarea { width: 100%; padding: 16px; border: 1.5px solid #eee; border-radius: 15px; margin-bottom: 18px; font-size: 14px; box-sizing: border-box; background: #fff; }
-        
+
+        label { display: block; font-size: 11px; font-weight: 700; color: #90a4ae; margin-bottom: 8px; text-transform: uppercase; margin-top: 10px; }
+        input, select, textarea { 
+            width: 100%; padding: 16px; border: 1.5px solid #eee; border-radius: 15px; 
+            margin-bottom: 12px; font-size: 14px; box-sizing: border-box; background: #fafafa; 
+            transition: border-color 0.3s; font-family: inherit;
+        }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--forest-heal); background: #fff; }
+
         /* Audio Player Styling */
-        .audio-player-box { background: #fdf2f8; padding: 20px; border-radius: 20px; margin-bottom: 20px; border: 1px solid #fbcfe8; }
-        audio { width: 100%; height: 35px; margin-top: 10px; }
+        .audio-player-box { background: #fdf2f8; padding: 20px; border-radius: 22px; margin-bottom: 20px; border: 1px solid #fbcfe8; }
+        audio { width: 100%; height: 35px; margin-top: 12px; border-radius: 10px; }
 
         #logic-box { background: #f1f8e9; padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 1px dashed var(--forest-heal); display: none; }
-        .btn-main { background: var(--forest-heal); color: white; padding: 20px; width: 100%; border: none; border-radius: 18px; font-weight: 700; font-size: 16px; cursor: pointer; }
+        
+        .btn-main { background: var(--forest-heal); color: white; padding: 20px; width: 100%; border: none; border-radius: 18px; font-weight: 700; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .btn-main:hover { background: #003d33; }
+        
         .btn-accent { background: var(--accent); color: white; padding: 18px; width: 100%; border: none; border-radius: 18px; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 10px; }
-        .btn-back { border: none; background: none; color: #90a4ae; margin-bottom: 20px; cursor: pointer; font-weight: 600; }
-        .footer { text-align: center; padding: 40px 0 130px 0; color: #b0bec5; font-size: 10px; text-transform: uppercase; }
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; display: flex; justify-content: space-around; padding: 15px 0 35px 0; border-top: 1px solid #eee; border-top-left-radius: 30px; border-top-right-radius: 30px; }
-        .nav-link { text-align: center; text-decoration: none; color: #b0bec5; font-size: 10px; font-weight: 700; flex: 1; }
+        
+        .btn-back { border: none; background: none; color: #90a4ae; margin-bottom: 20px; cursor: pointer; font-weight: 600; padding: 0; }
+
+        /* Success Message Overlay */
+        #success-overlay {
+            display: none; position: fixed; top:0; left:0; width:100%; height:100%; 
+            background: rgba(255,255,255,0.95); z-index: 1000; flex-direction: column; 
+            align-items: center; justify-content: center; text-align: center; padding: 20px;
+        }
+
+        .footer { text-align: center; padding: 40px 0 130px 0; color: #b0bec5; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Bottom Nav */
+        .bottom-nav { 
+            position: fixed; bottom: 0; left: 0; right: 0; background: #fff; 
+            display: flex; justify-content: space-around; padding: 15px 0 30px 0; 
+            border-top: 1px solid #eee; border-top-left-radius: 30px; border-top-right-radius: 30px; 
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.03);
+        }
+        .nav-link { text-align: center; text-decoration: none; color: #b0bec5; font-size: 10px; font-weight: 700; flex: 1; transition: 0.3s; }
+        .nav-link.active, .nav-link:hover { color: var(--forest-heal); }
+        .nav-link i { font-size: 18px; margin-bottom: 5px; }
     </style>
 </head>
 <body>
@@ -61,59 +134,73 @@
             <div class="card-icon icon-psycho"><i class="fas fa-user-shield"></i></div>
             <div class="card-text"><b>Psychotherapy</b><span>Clinical support for mental well-being</span></div>
         </div>
-        
         <div class="card" onclick="showAudioLibrary()">
             <div class="card-icon icon-audio"><i class="fas fa-headphones-alt"></i></div>
             <div class="card-text"><b>Audio Library</b><span>Listen to free samples & guided audio</span></div>
         </div>
+        <div class="footer">Empowering Minds • Healing Souls</div>
     </div>
 
     <div id="audio-library" class="form-section">
         <button class="btn-back" onclick="showHome()"><i class="fas fa-arrow-left"></i> BACK</button>
-        <h3 style="text-align:center; color: var(--accent);">Sample Previews</h3>
+        <h3 style="text-align:center; color: var(--accent); margin-bottom: 25px;">Sample Previews</h3>
         
         <div class="audio-player-box">
-            <label style="color:var(--accent);">1. Relaxation Deepening (Sample)</label>
-            <span>Experience the calming voice of Abdulrauf.</span>
+            <label style="color:var(--accent);">1. Relaxation Deepening</label>
+            <span style="font-size: 12px;">Experience the calming voice of Abdulrauf.</span>
             <audio controls>
-                <source src="sample-relaxation.mp3" type="audio/mpeg">
+                <source src="YOUR_URL_HERE/sample-relaxation.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </div>
 
         <div class="audio-player-box">
-            <label style="color:var(--accent);">2. NLP Positive Anchor (Sample)</label>
-            <span>A quick technique to shift your state.</span>
+            <label style="color:var(--accent);">2. NLP Positive Anchor</label>
+            <span style="font-size: 12px;">A quick technique to shift your state.</span>
             <audio controls>
-                <source src="sample-nlp.mp3" type="audio/mpeg">
+                <source src="YOUR_URL_HERE/sample-nlp.mp3" type="audio/mpeg">
             </audio>
         </div>
 
-        <p style="font-size: 11px; text-align: center; color: #888;">Loved the samples? Request full access to our 50+ hour therapeutic library.</p>
+        <p style="font-size: 12px; text-align: center; color: #666; margin-top: 25px;">Loved the samples? Request full access to our 50+ hour therapeutic library.</p>
         <button class="btn-accent" onclick="requestFullLibrary()">Unlock Full Library</button>
     </div>
 
     <div id="booking-form" class="form-section">
         <button class="btn-back" onclick="showHome()"><i class="fas fa-arrow-left"></i> BACK</button>
-        <h3 id="service-title" style="text-align:center;">Booking</h3>
+        <h3 id="service-title" style="text-align:center; color: var(--deep-ocean);">Booking</h3>
+        
         <input type="hidden" id="hidden-service">
+        
         <label>Full Name</label>
         <input type="text" id="client-name" placeholder="Enter your name">
+        
         <label>WhatsApp Number</label>
-        <input type="tel" id="client-phone" placeholder="03XXXXXXXXX">
+        <input type="tel" id="client-phone" placeholder="e.g. 03001234567">
+        
         <div id="logic-box">
             <label id="logic-label">Special Question</label>
             <input type="text" id="logic-answer" placeholder="Your answer...">
         </div>
+        
         <label>Session Mode</label>
         <select id="session-mode">
             <option value="Online (Video Call)">Online (Video Call)</option>
             <option value="In-Person (Clinic)">In-Person (Clinic)</option>
         </select>
+        
         <label>Describe your primary concern</label>
-        <textarea id="client-goal" rows="3" placeholder="How can I help you today?"></textarea>
-        <button class="btn-main" onclick="submitBooking()">Submit Request</button>
+        <textarea id="client-goal" rows="4" placeholder="Briefly describe what you'd like to work on..."></textarea>
+        
+        <button class="btn-main" onclick="submitBooking()">Submit via WhatsApp</button>
     </div>
+</div>
+
+<div id="success-overlay">
+    <i class="fas fa-check-circle" style="font-size: 80px; color: var(--success); margin-bottom: 20px;"></i>
+    <h2 style="color: var(--deep-ocean);">Request Sent!</h2>
+    <p style="color: #666; max-width: 300px;">Your booking details have been prepared. Please send the message on WhatsApp to finalize.</p>
+    <button class="btn-main" style="width: 200px; margin-top: 20px;" onclick="showHome()">Return Home</button>
 </div>
 
 <div class="bottom-nav">
@@ -127,51 +214,90 @@
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqgxPJXnGiVndINcc8OoeuKAtDx5VYd0iasv0LvxAeK16p2Eg_NgurUKVlbouH3zVWNQ/exec";
 
     function runLogic(serviceName) {
-        document.getElementById('home-screen').style.display = 'none';
-        document.getElementById('audio-library').style.display = 'none';
+        hideAll();
         document.getElementById('booking-form').style.display = 'block';
-        document.getElementById('service-title').innerText = "Book " + serviceName;
+        document.getElementById('service-title').innerText = serviceName;
         document.getElementById('hidden-service').value = serviceName;
+        
         const box = document.getElementById('logic-box');
         const label = document.getElementById('logic-label');
         const input = document.getElementById('logic-answer');
+        
+        box.style.display = 'block';
+        input.value = ""; // Clear previous answer
+
         if(serviceName === 'Hypnotherapy') {
-            box.style.display = 'block'; label.innerText = "Have you experienced hypnosis before?";
+            label.innerText = "Have you experienced hypnosis before?";
         } else if (serviceName === 'NLP Breakthrough') {
-            box.style.display = 'block'; label.innerText = "What is the biggest mental block you face?";
+            label.innerText = "What is the biggest mental block you face?";
         } else if (serviceName === 'Psychotherapy') {
-            box.style.display = 'block'; label.innerText = "Is this your first time seeking therapy?";
-        } else { box.style.display = 'none'; input.value = "N/A"; }
+            label.innerText = "Is this your first time seeking therapy?";
+        } else { 
+            box.style.display = 'none'; 
+            input.value = "N/A"; 
+        }
         window.scrollTo(0,0);
     }
 
     function showAudioLibrary() {
-        document.getElementById('home-screen').style.display = 'none';
-        document.getElementById('booking-form').style.display = 'none';
+        hideAll();
         document.getElementById('audio-library').style.display = 'block';
         window.scrollTo(0,0);
     }
 
     function showHome() {
+        hideAll();
+        document.getElementById('home-screen').style.display = 'block';
+        document.getElementById('success-overlay').style.display = 'none';
+    }
+
+    function hideAll() {
+        document.getElementById('home-screen').style.display = 'none';
         document.getElementById('booking-form').style.display = 'none';
         document.getElementById('audio-library').style.display = 'none';
-        document.getElementById('home-screen').style.display = 'block';
     }
 
     function requestFullLibrary() {
-        window.open(`https://wa.me/${MY_WHATSAPP}?text=*FULL LIBRARY ACCESS REQUEST*%0A%0AI listened to the samples and would like to get paid access to the complete AIMS therapeutic library.`, '_blank');
+        const text = encodeURIComponent("*FULL LIBRARY ACCESS REQUEST*\n\nHello AIMS, I listened to the samples and would like to get access to the complete 50+ hour therapeutic library.");
+        window.open(`https://wa.me/${MY_WHATSAPP}?text=${text}`, '_blank');
     }
 
     async function submitBooking() {
         const service = document.getElementById('hidden-service').value;
-        const name = document.getElementById('client-name').value;
-        const phone = document.getElementById('client-phone').value;
+        const name = document.getElementById('client-name').value.trim();
+        const phone = document.getElementById('client-phone').value.trim();
         const mode = document.getElementById('session-mode').value;
-        const goal = document.getElementById('client-goal').value;
-        const extra = document.getElementById('logic-answer').value;
-        if(!name || !phone) { alert("Please fill Name & Phone."); return; }
-        fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ service, name, phone, mode, goal, extra }) });
-        const msg = `*AIMS CONSULTANCY*%0A*Service:* ${service}%0A*Client:* ${name}%0A*Phone:* ${phone}%0A*Mode:* ${mode}%0A*Extra:* ${extra}%0A*Goal:* ${goal}`;
+        const goal = document.getElementById('client-goal').value.trim();
+        const extra = document.getElementById('logic-answer').value.trim();
+
+        // 1. Validation
+        if(!name || !phone || !goal) { 
+            alert("Please provide your Name, Phone, and Concern so we can help you better."); 
+            return; 
+        }
+
+        // 2. Google Sheets Logging (Silent)
+        fetch(SCRIPT_URL, { 
+            method: 'POST', 
+            mode: 'no-cors', 
+            body: JSON.stringify({ service, name, phone, mode, goal, extra }) 
+        }).catch(err => console.log("Logging error:", err));
+
+        // 3. Formatted WhatsApp Message
+        const msg = encodeURIComponent(
+            `*✨ NEW BOOKING REQUEST - AIMS ✨*\n\n` +
+            `*👤 Client Name:* ${name}\n` +
+            `*📱 Phone:* ${phone}\n` +
+            `*🛠 Service:* ${service}\n` +
+            `*📍 Mode:* ${mode}\n` +
+            `*❓ Info:* ${extra}\n\n` +
+            `*📝 Primary Concern:* \n${goal}`
+        );
+
+        // 4. Show Success Overlay & Open WhatsApp
+        document.getElementById('booking-form').style.display = 'none';
+        document.getElementById('success-overlay').style.display = 'flex';
+        
         window.open(`https://wa.me/${MY_WHATSAPP}?text=${msg}`, '_blank');
     }
 </script>
