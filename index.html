@@ -30,7 +30,7 @@
         .container { max-width: 450px; margin: -30px auto 0 auto; padding: 20px; flex-grow: 1; width: 100%; box-sizing: border-box; }
 
         .card { 
-            background: var(--white); border-radius: 25px; padding: 25px; margin-bottom: 20px; 
+            background: var(--white); border-radius: 25px; padding: 25px; margin-bottom: 15px; 
             display: flex; align-items: center; gap: 20px; cursor: pointer; transition: 0.3s; 
             border: 1px solid rgba(0,0,0,0.03); text-decoration: none; color: inherit;
             box-shadow: 0 8px 20px rgba(0,0,0,0.04);
@@ -41,6 +41,7 @@
         .icon-nlp { background: #e0f2f1; color: #00695c; }
         .icon-hypno { background: #ede7f6; color: #512da8; }
         .icon-coach { background: #fff3e0; color: #e65100; }
+        .icon-audio { background: #fce4ec; color: #d81b60; }
         
         .card-text b { display: block; font-size: 17px; margin-bottom: 4px; color: var(--deep-ocean); }
         .card-text span { font-size: 13px; color: #607d8b; line-height: 1.5; }
@@ -53,7 +54,7 @@
         
         input, select, textarea { width: 100%; padding: 16px; border: 1.5px solid #eee; border-radius: 15px; margin-bottom: 18px; font-size: 14px; box-sizing: border-box; font-family: inherit; background: #fff; }
         
-        /* Logic Styling */
+        /* LOGIC BOX STYLING */
         #logic-box { background: #f1f8e9; padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 1px dashed var(--forest-heal); display: none; }
 
         .btn-main { background: var(--forest-heal); color: white; padding: 20px; width: 100%; border: none; border-radius: 18px; font-weight: 700; font-size: 16px; cursor: pointer; }
@@ -76,20 +77,25 @@
 
 <div class="container">
     <div id="home-screen">
-        <div class="card" onclick="showForm('booking-form', 'NLP Breakthrough')">
+        <div class="card" onclick="openBooking('NLP Breakthrough')">
             <div class="card-icon icon-nlp"><i class="fas fa-brain"></i></div>
             <div class="card-text"><b>NLP Coaching</b><span>Reprogram your mind for success</span></div>
         </div>
 
-        <div class="card" onclick="showForm('booking-form', 'Hypnotherapy')">
+        <div class="card" onclick="openBooking('Hypnotherapy')">
             <div class="card-icon icon-hypno"><i class="fas fa-eye"></i></div>
             <div class="card-text"><b>Hypnotherapy</b><span>Deep subconscious healing sessions</span></div>
         </div>
 
-        <div class="card" onclick="showForm('booking-form', 'Life Coaching')">
+        <div class="card" onclick="openBooking('Life Coaching')">
             <div class="card-icon icon-coach"><i class="fas fa-compass"></i></div>
             <div class="card-text"><b>Life Coaching</b><span>Strategic tools for your future</span></div>
         </div>
+
+        <a href="https://wa.me/923005364319?text=*RESOURCE ACCESS REQUEST*" class="card">
+            <div class="card-icon icon-audio"><i class="fas fa-headphones-alt"></i></div>
+            <div class="card-text"><b>Audio Library</b><span>Guided meditations & calm audio</span></div>
+        </a>
     </div>
 
     <div id="booking-form" class="form-section">
@@ -134,28 +140,32 @@
     const MY_WHATSAPP = "923005364319";
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqgxPJXnGiVndINcc8OoeuKAtDx5VYd0iasv0LvxAeK16p2Eg_NgurUKVlbouH3zVWNQ/exec";
 
-    function showForm(id, serviceName) {
+    // This function handles opening the form AND applying the logic
+    function openBooking(serviceName) {
         document.getElementById('home-screen').style.display = 'none';
-        document.getElementById(id).style.display = 'block';
+        document.getElementById('booking-form').style.display = 'block';
         document.getElementById('service-title').innerText = "Book " + serviceName;
         document.getElementById('selected-service').value = serviceName;
         
-        // CONDITIONAL LOGIC
         const logicBox = document.getElementById('logic-box');
         const logicLabel = document.getElementById('logic-label');
         const logicInput = document.getElementById('logic-answer');
 
+        // Logic based on service type
         if(serviceName === 'Hypnotherapy') {
             logicBox.style.display = 'block';
             logicLabel.innerText = "Have you experienced hypnosis before?";
-            logicInput.placeholder = "Yes/No (and any specific fears)";
+            logicInput.placeholder = "Yes/No (and any specific concerns)";
+            logicInput.value = ""; 
         } else if (serviceName === 'NLP Breakthrough') {
             logicBox.style.display = 'block';
             logicLabel.innerText = "What is the biggest mental block you face?";
-            logicInput.placeholder = "e.g. Fear of failure, anxiety, etc.";
+            logicInput.placeholder = "e.g. Anxiety, public speaking, etc.";
+            logicInput.value = "";
         } else {
+            // Hide for Life Coaching or others
             logicBox.style.display = 'none';
-            logicInput.value = "N/A"; // Hidden for basic Life Coaching
+            logicInput.value = "N/A"; 
         }
         
         window.scrollTo(0,0);
@@ -185,11 +195,11 @@
                 method: 'POST',
                 mode: 'no-cors',
                 body: JSON.stringify({ 
-                    service, 
-                    name, 
-                    phone, 
-                    mode, 
-                    goal, 
+                    service: service, 
+                    name: name, 
+                    phone: phone, 
+                    mode: mode, 
+                    goal: goal, 
                     extra: logicDetail 
                 })
             });
@@ -201,7 +211,7 @@
                         `*Client:* ${name}%0A` +
                         `*Phone:* ${phone}%0A` +
                         `*Mode:* ${mode}%0A` +
-                        `*Logic Detail:* ${logicDetail}%0A` +
+                        `*Logic Answer:* ${logicDetail}%0A` +
                         `*Goal:* ${goal}`;
 
         window.open(`https://wa.me/${MY_WHATSAPP}?text=${message}`, '_blank');
