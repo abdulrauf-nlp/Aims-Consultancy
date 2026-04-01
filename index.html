@@ -47,7 +47,8 @@
         }
 
         .bio-card h3 { margin: 10px 0 5px 0; color: var(--deep-ocean); font-size: 26px; font-weight: 700; }
-        .bio-card p { font-size: 15px; color: #546e7a; margin-bottom: 10px; }
+        .bio-card .tagline-primary { font-size: 15px; color: var(--forest-heal); font-weight: 700; margin-bottom: 5px; display: block; }
+        .bio-card .tagline-secondary { font-size: 14px; color: #546e7a; line-height: 1.4; display: block; }
 
         .section-title { font-size: 13px; font-weight: 700; color: var(--forest-heal); text-transform: uppercase; margin: 40px 0 20px 10px; letter-spacing: 2px; opacity: 0.7; }
         
@@ -117,7 +118,8 @@
         <div class="bio-card">
             <img src="new-logo.jpeg" class="bio-img" alt="Abdul Rauf">
             <h3>Abdul Rauf</h3>
-            <p>Psychologist, NLP Life Coach & Hypnotherapist. Helping you unlock the power of your subconscious mind.</p>
+            <span class="tagline-primary">Psychologist, NLP Life Coach & Hypnotherapist</span>
+            <span class="tagline-secondary">Helping you unlock the power of your subconscious mind</span>
         </div>
 
         <div class="section-title">Our Therapeutic Services</div>
@@ -206,6 +208,7 @@
 </div>
 
 <script>
+    // 1. UPDATE YOUR CALENDAR LINK HERE
     const MY_CALENDLY_URL = "https://calendly.com/your-link-here"; 
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqgxPJXnGiVndINcc8OoeuKAtDx5VYd0iasv0LvxAeK16p2Eg_NgurUKVlbouH3zVWNQ/exec";
 
