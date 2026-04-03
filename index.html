@@ -1,183 +1,283 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdulrauf | Mind Sciences Specialist</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdulrauf | Mind Sciences Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { 
+            --deep-ocean: #0a2e2a; 
+            --forest-heal: #004d40; 
+            --text-main: #2c3e50; 
+            --soft-gray: #f0f4f3; 
+            --white: #ffffff; 
+            --glass: rgba(255, 255, 255, 0.85);
+        }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: linear-gradient(180deg, #f0f4f3 0%, #e0e7e6 100%); 
+            margin: 0; color: var(--text-main); line-height: 1.6; 
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        header { 
+            background: linear-gradient(135deg, #0a2e2a 0%, #004d40 100%); 
+            padding: 100px 20px 140px 20px; text-align: center; 
+            border-bottom-left-radius: 60px; border-bottom-right-radius: 60px;
+            position: relative; overflow: hidden;
+        }
 
-<style>
-:root { 
-    --deep-ocean: #0a2e2a; 
-    --forest-heal: #004d40; 
-    --text-main: #2c3e50; 
-    --soft-gray: #f0f4f3; 
-    --white: #ffffff; 
-    --glass: rgba(255, 255, 255, 0.65);
-}
+        .container { max-width: 500px; margin: -120px auto 0 auto; padding: 0 20px 140px 20px; box-sizing: border-box; position: relative; z-index: 2; }
 
-/* 🌌 Animated background (added, not replacing your design) */
-body { 
-    font-family: 'Plus Jakarta Sans', sans-serif; 
-    margin: 0; 
-    color: var(--text-main); 
-    line-height: 1.6;
-    background: linear-gradient(120deg, #f0f4f3, #d7e3e2, #f0f4f3);
-    background-size: 300% 300%;
-    animation: bgMove 12s ease infinite;
-}
+        .bio-card {
+            background: var(--glass); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-radius: 35px; padding: 35px 25px; text-align: center;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.06); margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.3); animation: fadeIn 0.8s ease-out;
+        }
 
-@keyframes bgMove {
-    0% {background-position:0% 50%;}
-    50% {background-position:100% 50%;}
-    100% {background-position:0% 50%;}
-}
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Glow blobs */
-body::before, body::after {
-    content:"";
-    position:fixed;
-    width:300px;
-    height:300px;
-    border-radius:50%;
-    background:rgba(0,255,200,0.15);
-    filter:blur(80px);
-    z-index:0;
-}
-body::before { top:10%; left:10%; }
-body::after { bottom:10%; right:10%; }
+        .bio-img { 
+            width: 130px; height: 130px; border-radius: 40px; 
+            margin: -100px auto 20px auto; border: 8px solid var(--white); 
+            object-fit: cover; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
 
-header { 
-    background: linear-gradient(135deg, #0a2e2a 0%, #004d40 100%); 
-    padding: 100px 20px 140px 20px; 
-    border-bottom-left-radius: 60px; 
-    border-bottom-right-radius: 60px;
-    position: relative; 
-    overflow: hidden;
-}
+        .bio-card h3 { margin: 10px 0 5px 0; color: var(--deep-ocean); font-size: 26px; font-weight: 700; }
+        .bio-card .tagline-primary { font-size: 15px; color: var(--forest-heal); font-weight: 700; margin-bottom: 5px; display: block; }
+        .bio-card .tagline-secondary { font-size: 14px; color: #546e7a; line-height: 1.4; display: block; }
 
-.container { 
-    max-width: 500px; 
-    margin: -120px auto 0 auto; 
-    padding: 0 20px 140px 20px; 
-    box-sizing: border-box; 
-    position: relative; 
-    z-index: 2; 
-}
+        .section-title { font-size: 13px; font-weight: 700; color: var(--forest-heal); text-transform: uppercase; margin: 40px 0 20px 10px; letter-spacing: 2px; opacity: 0.7; }
+        
+        .card { 
+            background: var(--white); border-radius: 28px; padding: 24px; margin-bottom: 18px; 
+            display: flex; align-items: center; gap: 18px; cursor: pointer; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+        }
 
-/* 🧊 GLASS UPGRADE (applied on your existing classes) */
-.bio-card,
-.card,
-.quiz-box,
-.faq-item,
-.form-section,
-.bottom-nav {
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    background: rgba(255,255,255,0.6);
-    border: 1px solid rgba(255,255,255,0.4);
-}
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.06); border-color: var(--forest-heal); }
+        .card:active { transform: scale(0.97); }
 
-/* Shine effect */
-.card::before,
-.bio-card::before {
-    content:"";
-    position:absolute;
-    top:0;
-    left:-100%;
-    width:60%;
-    height:100%;
-    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.5),transparent);
-    transform:skewX(-25deg);
-}
-.card:hover::before,
-.bio-card:hover::before {
-    left:120%;
-    transition:0.8s;
-}
+        .card-icon { width: 55px; height: 55px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+        .icon-nlp { background: #e0f2f1; color: #00695c; }
+        .icon-hypno { background: #ede7f6; color: #512da8; }
+        .icon-psycho { background: #fff3e0; color: #e65100; }
+        
+        .card-text b { display: block; font-size: 18px; color: var(--deep-ocean); }
+        .card-text span { font-size: 13px; color: #78909c; }
 
-/* KEEPING YOUR ORIGINAL STYLES BELOW */
+        .quiz-box { 
+            background: linear-gradient(135deg, var(--deep-ocean) 0%, #1a4a44 100%); 
+            color: white; padding: 40px 30px; border-radius: 40px; margin: 40px 0; text-align: center;
+        }
 
-.bio-card {
-    border-radius: 35px; padding: 35px 25px; text-align: center;
-    box-shadow: 0 20px 45px rgba(0,0,0,0.06); margin-bottom: 30px;
-    animation: fadeIn 0.8s ease-out;
-}
+        .btn-outline { 
+            background: rgba(128, 222, 234, 0.1); border: 2px solid #80deea; color: #80deea; 
+            padding: 15px; border-radius: 20px; font-weight: 700; cursor: pointer; width: 100%; margin-top: 15px;
+        }
 
-@keyframes fadeIn { 
-from { opacity: 0; transform: translateY(20px); } 
-to { opacity: 1; transform: translateY(0); } 
-}
+        .faq-item { background: #fff; border-radius: 22px; padding: 20px; margin-bottom: 15px; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .faq-question { font-weight: 700; font-size: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { display: none; padding-top: 15px; font-size: 14px; color: #607d8b; border-top: 1px solid #f0f0f0; margin-top: 10px; }
 
-.bio-img { 
-    width: 130px; height: 130px; border-radius: 40px; 
-    margin: -100px auto 20px auto; border: 8px solid var(--white); 
-    object-fit: cover; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
+        .form-section { background: #fff; padding: 35px; border-radius: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); margin-top: 20px; animation: fadeInUp 0.4s; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        input, select, textarea { 
+            width: 100%; padding: 18px; border: 1px solid #eee; border-radius: 15px; 
+            margin-bottom: 20px; box-sizing: border-box; background: #fafafa; font-family: inherit;
+        }
 
-.bio-card h3 { margin: 10px 0 5px 0; color: var(--deep-ocean); font-size: 26px; font-weight: 700; }
-.bio-card .tagline-primary { font-size: 15px; color: var(--forest-heal); font-weight: 700; margin-bottom: 5px; display: block; }
-.bio-card .tagline-secondary { font-size: 14px; color: #546e7a; line-height: 1.4; display: block; }
+        .btn-main { 
+            background: var(--forest-heal); color: white; padding: 20px; width: 100%; 
+            border: none; border-radius: 20px; font-weight: 700; font-size: 16px; 
+            cursor: pointer; box-shadow: 0 10px 20px rgba(0, 77, 64, 0.2); transition: 0.3s;
+        }
 
-.section-title { font-size: 13px; font-weight: 700; color: var(--forest-heal); text-transform: uppercase; margin: 40px 0 20px 10px; letter-spacing: 2px; opacity: 0.7; }
+        .bottom-nav { 
+            position: fixed; bottom: 0; left: 0; right: 0; 
+            background: var(--glass); backdrop-filter: blur(10px);
+            display: flex; justify-content: space-around; padding: 15px 0 35px 0; 
+            border-top: 1px solid rgba(0,0,0,0.05); border-radius: 40px 40px 0 0; z-index: 100;
+        }
 
-.card { 
-    border-radius: 28px; padding: 24px; margin-bottom: 18px; 
-    display: flex; align-items: center; gap: 18px; cursor: pointer; 
-    transition: 0.3s;
-    position:relative;
-}
-
-.card:hover { 
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,255,200,0.2);
-}
-
-.card-icon { width: 55px; height: 55px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
-.icon-nlp { background: rgba(0,255,200,0.15); color: #00695c; }
-.icon-hypno { background: rgba(180,150,255,0.15); color: #512da8; }
-.icon-psycho { background: rgba(255,180,100,0.15); color: #e65100; }
-
-.quiz-box { padding: 40px 30px; border-radius: 40px; margin: 40px 0; text-align: center; }
-
-.btn-outline { 
-    background: rgba(128, 222, 234, 0.1); border: 2px solid #80deea; color: #80deea; 
-    padding: 15px; border-radius: 20px; font-weight: 700; cursor: pointer; width: 100%; margin-top: 15px;
-}
-
-.faq-item { border-radius: 22px; padding: 20px; margin-bottom: 15px; cursor: pointer; }
-.faq-question { font-weight: 700; font-size: 15px; display: flex; justify-content: space-between; align-items: center; }
-.faq-answer { display: none; padding-top: 15px; font-size: 14px; color: #607d8b; }
-
-.form-section { padding: 35px; border-radius: 40px; margin-top: 20px; }
-
-input, select, textarea { 
-    width: 100%; padding: 18px; border-radius: 15px; 
-    margin-bottom: 20px; background: rgba(255,255,255,0.7);
-}
-
-.btn-main { 
-    background: linear-gradient(135deg,#00c9a7,#00796b);
-    color: white; padding: 20px; width: 100%; 
-    border: none; border-radius: 20px; font-weight: 700;
-}
-
-.bottom-nav { 
-    position: fixed; bottom: 0; left: 0; right: 0; 
-    display: flex; justify-content: space-around; padding: 15px 0 35px 0; 
-    border-radius: 40px 40px 0 0; z-index: 100;
-}
-
-.nav-link { text-align: center; text-decoration: none; color: #333; font-size: 11px; font-weight: 700; }
-.nav-link i { font-size: 22px; margin-bottom: 6px; }
-
-</style>
+        .nav-link { text-align: center; text-decoration: none; color: #94a3b8; font-size: 11px; font-weight: 700; flex: 1; }
+        .nav-link i { font-size: 22px; margin-bottom: 6px; }
+    </style>
 </head>
-
 <body>
 
-<!-- 🔥 YOUR ORIGINAL HTML + SCRIPT REMAINS 100% SAME BELOW -->
+<header></header>
 
-<!-- (I did NOT touch anything below this line) -->
+<div class="container">
+    <div id="home-screen">
+        <div class="bio-card">
+            <img src="new-logo.jpeg" class="bio-img" alt="Abdul Rauf">
+            <h3>Abdul Rauf</h3>
+            <span class="tagline-primary">Psychologist, NLP Life Coach & Hypnotherapist</span>
+            <span class="tagline-secondary">Helping you unlock the power of your subconscious mind</span>
+        </div>
+
+        <div class="section-title">Our Therapeutic Services</div>
+        <div class="card" onclick="runLogic('NLP Breakthrough')">
+            <div class="card-icon icon-nlp"><i class="fas fa-brain"></i></div>
+            <div class="card-text"><b>NLP Coaching</b><span>Rewrite mental programs</span></div>
+        </div>
+        <div class="card" onclick="runLogic('Hypnotherapy')">
+            <div class="card-icon icon-hypno"><i class="fas fa-eye"></i></div>
+            <div class="card-text"><b>Hypnotherapy</b><span>Deep healing for habits</span></div>
+        </div>
+        <div class="card" onclick="runLogic('Psychotherapy')">
+            <div class="card-icon icon-psycho"><i class="fas fa-user-shield"></i></div>
+            <div class="card-text"><b>Psychotherapy</b><span>Clinical emotional resilience</span></div>
+        </div>
+
+        <div class="quiz-box">
+            <h4>Not sure where to start?</h4>
+            <p style="font-size: 14px; opacity: 0.8;">Take our assessment to find the right path for your growth.</p>
+            <button class="btn-outline" onclick="startQuiz()">Start Assessment</button>
+        </div>
+
+        <div class="section-title">Common Questions</div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">Is the session confidential? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Absolutely. We follow strict international ethical standards for privacy and data protection.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">How many sessions will I need? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">While it varies, many clients experience a significant breakthrough within 3 to 5 sessions.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">Can I do sessions online? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Yes, NLP and Hypnotherapy are highly effective via Zoom or Video Call.</div>
+        </div>
+
+        <p style="text-align:center; font-size: 11px; color: #b0bec5; margin: 50px 0 20px 0; text-transform: uppercase; letter-spacing: 1px;">AIMS • Abdulrauf Institute of Mind Sciences</p>
+    </div>
+
+    <div id="quiz-screen" class="form-section" style="display:none;">
+        <button onclick="showHome()" style="border:none; background:none; color:#999; cursor:pointer; margin-bottom:20px;"><i class="fas fa-arrow-left"></i> BACK</button>
+        <h3 style="text-align:center;">Assessment</h3>
+        <p id="quiz-question" style="text-align:center; font-weight:500;">What is your primary goal?</p>
+        <div id="quiz-options">
+            <button class="btn-main" style="margin-bottom:12px; background:#f5f5f5; color:#333;" onclick="quizResult('Hypnotherapy')">Overcoming a Habit/Fear</button>
+            <button class="btn-main" style="margin-bottom:12px; background:#f5f5f5; color:#333;" onclick="quizResult('NLP Breakthrough')">Peak Performance & Career</button>
+            <button class="btn-main" style="margin-bottom:12px; background:#f5f5f5; color:#333;" onclick="quizResult('Psychotherapy')">Deep Emotional Healing</button>
+        </div>
+    </div>
+
+    <div id="booking-form" class="form-section" style="display:none;">
+        <button onclick="showHome()" style="border:none; background:none; color:#999; cursor:pointer; margin-bottom:20px;"><i class="fas fa-arrow-left"></i> BACK</button>
+        <h3 id="service-title" style="text-align:center; margin-top:0;">Secure Your Slot</h3>
+        <p id="quiz-suggestion" style="text-align:center; color:var(--forest-heal); font-size:13px; font-weight:700;"></p>
+        
+        <input type="hidden" id="hidden-service">
+        <label style="font-size:11px; font-weight:700; color:#999;">YOUR NAME</label>
+        <input type="text" id="client-name" placeholder="Full Name">
+        
+        <label style="font-size:11px; font-weight:700; color:#999;">WHATSAPP NUMBER</label>
+        <input type="tel" id="client-phone" placeholder="03XXXXXXXXX">
+        
+        <div id="logic-box" style="display:none; background:#f1f8e9; padding:15px; border-radius:15px; margin-bottom:20px;">
+            <label id="logic-label" style="color:var(--forest-heal); font-size:11px; font-weight:700;">Special Question</label>
+            <input type="text" id="logic-answer" placeholder="Your answer..." style="margin-top:10px; margin-bottom:0;">
+        </div>
+
+        <label style="font-size:11px; font-weight:700; color:#999;">SESSION MODE</label>
+        <select id="session-mode">
+            <option value="Online (Video Call)">Online (Video Call)</option>
+            <option value="In-Person (Clinic)">In-Person (Clinic)</option>
+        </select>
+        
+        <label style="font-size:11px; font-weight:700; color:#999;">DESCRIBE YOUR CONCERN</label>
+        <textarea id="client-goal" rows="3" placeholder="Briefly explain your goal..."></textarea>
+        
+        <button class="btn-main" onclick="submitAndBook()">Confirm & Select Time <i class="fas fa-calendar-alt" style="margin-left:10px;"></i></button>
+        <p style="font-size: 10px; text-align:center; color:#999; margin-top:15px;">Next step: You will be redirected to my calendar.</p>
+    </div>
+</div>
+
+<div class="bottom-nav">
+    <a href="#" class="nav-link" onclick="showHome()"><i class="fas fa-home"></i><br>HOME</a>
+    <a href="tel:923005364319" class="nav-link"><i class="fas fa-phone-alt"></i><br>CALL</a>
+    <a href="https://wa.me/923005364319" class="nav-link" style="color: #25d366;"><i class="fab fa-whatsapp"></i><br>WHATSAPP</a>
+</div>
+
+<script>
+    // 1. UPDATE YOUR CALENDAR LINK HERE
+    const MY_CALENDLY_URL = "https://calendly.com/your-link-here"; 
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqgxPJXnGiVndINcc8OoeuKAtDx5VYd0iasv0LvxAeK16p2Eg_NgurUKVlbouH3zVWNQ/exec";
+
+    function toggleFaq(el) {
+        const answer = el.querySelector('.faq-answer');
+        const icon = el.querySelector('i');
+        const isVisible = answer.style.display === 'block';
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+        document.querySelectorAll('.faq-item i').forEach(i => i.style.transform = 'rotate(0deg)');
+        if(!isVisible) {
+            answer.style.display = 'block';
+            icon.style.transform = 'rotate(180deg)';
+        }
+    }
+
+    function startQuiz() {
+        document.getElementById('home-screen').style.display = 'none';
+        document.getElementById('quiz-screen').style.display = 'block';
+    }
+
+    function quizResult(service) {
+        document.getElementById('quiz-screen').style.display = 'none';
+        runLogic(service, true);
+    }
+
+    function runLogic(serviceName, fromQuiz = false) {
+        document.getElementById('home-screen').style.display = 'none';
+        document.getElementById('booking-form').style.display = 'block';
+        document.getElementById('service-title').innerText = serviceName;
+        document.getElementById('hidden-service').value = serviceName;
+        document.getElementById('quiz-suggestion').innerText = fromQuiz ? "Recommendation: " + serviceName : "";
+
+        const box = document.getElementById('logic-box');
+        const label = document.getElementById('logic-label');
+        if(serviceName === 'Hypnotherapy') {
+            box.style.display = 'block'; label.innerText = "Have you experienced hypnosis before?";
+        } else if (serviceName === 'NLP Breakthrough') {
+            box.style.display = 'block'; label.innerText = "What is your main mental hurdle?";
+        } else if (serviceName === 'Psychotherapy') {
+            box.style.display = 'block'; label.innerText = "Is this your first time in therapy?";
+        } else { box.style.display = 'none'; }
+        window.scrollTo(0,0);
+    }
+
+    function showHome() {
+        document.querySelectorAll('.form-section, #quiz-screen').forEach(s => s.style.display = 'none');
+        document.getElementById('home-screen').style.display = 'block';
+    }
+
+    async function submitAndBook() {
+        const service = document.getElementById('hidden-service').value;
+        const name = document.getElementById('client-name').value;
+        const phone = document.getElementById('client-phone').value;
+        const mode = document.getElementById('session-mode').value;
+        const goal = document.getElementById('client-goal').value;
+        const extra = document.getElementById('logic-answer').value || "N/A";
+
+        if(!name || !phone) { alert("Please enter your name and phone."); return; }
+
+        // Save data to Google Sheet
+        fetch(SCRIPT_URL, { 
+            method: 'POST', 
+            mode: 'no-cors', 
+            body: JSON.stringify({ service, name, phone, mode, goal, extra }) 
+        });
+
+        // Redirect to Calendar
+        window.location.href = MY_CALENDLY_URL;
+    }
+</script>
+</body>
+</html>
