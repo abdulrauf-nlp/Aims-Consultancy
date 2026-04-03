@@ -1,124 +1,173 @@
-<style>
-    :root {
-        --glass-bg: rgba(255, 255, 255, 0.4); /* Reduced opacity for more see-through look */
-        --glass-border: rgba(255, 255, 255, 0.2);
-        --text-primary: #1c1c1c; /* Dark charcoal for premium contrast */
-        --text-secondary: #2f4f4f; /* Dark teal for subtle professional touch */
-        --accent: #e0f7fa;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Rauf - Psychologist & NLP Coach</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --accent-color: #4a90e2;
+            --text-dark: #1e293b;
+        }
 
-    body {
-        /* Contextual therapy/meditation image with face silhouettes overlay */
-        background-image: url('therapy_silhouettes.jpg'); /* You will need an appropriate image */
-        background-size: cover;
-        background-position: center;
-        font-family: 'Montserrat', 'Inter', sans-serif; /* Cleaner, premium font */
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        margin: 0;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    .glass-card {
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px); /* Doubled the blur for profound depth */
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid var(--glass-border);
-        border-radius: 28px;
-        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15); /* Softer, deeper shadow */
-        padding: 50px 40px;
-        width: 100%;
-        max-width: 480px;
-        text-align: center;
-        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
-        position: relative; /* Setup for hover glow */
-    }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            padding: 40px 0 100px 0;
+        }
 
-    .glass-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        border-radius: 28px;
-        box-shadow: 0 0 100px var(--accent) inset;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-    }
+        /* --- ENHANCED GLASS CARD --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px); /* Stronger blur for more depth */
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
 
-    .glass-card:hover {
-        transform: translateY(-8px) scale(1.01);
-        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.2);
-    }
+        .glass-card:hover { transform: translateY(-5px); }
 
-    .glass-card:hover::before {
-        opacity: 0.15;
-    }
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
 
-    .profile-img {
-        width: 160px; /* Slightly larger image */
-        height: 160px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid #fff;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        margin-bottom: 25px;
-    }
+        h1 { font-size: 1.5rem; margin-bottom: 5px; }
+        .tagline { font-size: 0.95rem; color: #475569; margin-bottom: 20px; font-weight: 500; }
 
-    .main-title {
-        font-size: 1.5rem;
-        color: var(--text-primary);
-        margin: 8px 0;
-        font-weight: 700;
-        letter-spacing: -0.5px;
-        line-height: 1.1;
-    }
+        /* --- SERVICES GRID --- */
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .service-item {
+            background: rgba(255,255,255,0.3);
+            padding: 10px 5px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid var(--glass-border);
+        }
 
-    .sub-tagline {
-        font-size: 1.05rem;
-        color: var(--text-secondary);
-        margin-top: 12px;
-        font-weight: 500;
-        font-style: italic; /* Emphasizes the psychological aspect */
-    }
+        /* --- QUIZ SECTION --- */
+        .quiz-box { background: rgba(74, 144, 226, 0.15); padding: 20px; border-radius: 20px; margin-top: 20px; border: 1px dashed var(--accent-color); }
+        .btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
 
-    .service-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-        margin-top: 35px;
-    }
+        /* --- FORM STYLING --- */
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.5);
+            box-sizing: border-box;
+        }
 
-    .service-pill {
-        background: rgba(255, 255, 255, 0.3); /* Even softer pills */
-        padding: 12px 8px;
-        border-radius: 16px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--text-secondary);
-        border: 1px solid var(--glass-border);
-        transition: background 0.3s ease, transform 0.2s ease;
-    }
+        /* --- NAV BAR --- */
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
 
-    .service-pill:hover {
-        background: rgba(255, 255, 255, 0.6);
-        transform: scale(1.05);
-    }
-</style>
+        .nav-item { text-decoration: none; color: var(--text-dark); font-size: 0.85rem; font-weight: 600; }
+    </style>
+</head>
+<body>
 
-<div class="glass-card">
-    <img src="new-logo.jpeg" alt="Abdul Rauf" class="profile-img">
-    
-    <div class="main-title">
-        Psychologist, NLP Life Coach & Hypnotherapist
+<div class="container">
+    <div class="glass-card">
+        <img src="new-logo.jpeg" class="profile-img" alt="Profile">
+        <h1>Psychologist, NLP Life Coach & Hypnotherapist</h1>
+        <p class="tagline">Helping you unlock the power of your subconscious mind</p>
+        
+        <div class="services-grid">
+            <div class="service-item">NLP Coaching</div>
+            <div class="service-item">Hypnotherapy</div>
+            <div class="service-item">Psychotherapy</div>
+        </div>
+
+        <div class="quiz-box">
+            <h3 style="margin-top: 0;">Not sure where to start?</h3>
+            <p style="font-size: 0.85rem;">Take our quick 2-minute assessment.</p>
+            <button class="btn" onclick="startQuiz()">Start Assessment</button>
+        </div>
     </div>
-    <div class="sub-tagline">
-        Helping you unlock the power of your subconscious mind
-    </div>
 
-    <div class="service-container">
-        <div class="service-pill">NLP Coaching</div>
-        <div class="service-pill">Hypnotherapy</div>
-        <div class="service-pill">Psychotherapy</div>
+    <div class="glass-card">
+        <h3>Book Your Session</h3>
+        <form id="bookingForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <select>
+                <option>Select Service</option>
+                <option>NLP Coaching</option>
+                <option>Hypnotherapy</option>
+                <option>Psychotherapy</option>
+            </select>
+            <button type="submit" class="btn">Confirm & Select Time</button>
+        </form>
     </div>
 </div>
+
+<nav class="bottom-nav">
+    <a href="#" class="nav-item">🏠 Home</a>
+    <a href="tel:+123456789" class="nav-item">📞 Call</a>
+    <a href="https://wa.me/yournumber" class="nav-item">💬 WhatsApp</a>
+</nav>
+
+<script>
+    function startQuiz() {
+        alert("Assessment starting... This would lead to your quiz questions!");
+    }
+
+    document.getElementById('bookingForm').onsubmit = function(e) {
+        e.preventDefault();
+        alert("Data saved! Redirecting to calendar...");
+        window.location.href = "YOUR_CALENDLY_URL_HERE";
+    };
+</script>
+
+</body>
+</html>
