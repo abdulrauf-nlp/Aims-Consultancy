@@ -3,170 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdul Rauf - Psychologist & NLP Coach</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Abdul Rauf - Psychologist & Coach</title>
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.4);
-            --glass-border: rgba(255, 255, 255, 0.3);
-            --accent-color: #4a90e2;
-            --text-dark: #1e293b;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-color: #ffffff;
         }
 
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
-            min-height: 100vh;
-            color: var(--text-dark);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: var(--text-color);
+            padding-bottom: 80px; /* Space for bottom nav */
         }
 
-        .container {
-            width: 90%;
-            max-width: 500px;
-            padding: 40px 0 100px 0;
-        }
+        .container { padding: 20px; max-width: 500px; margin: auto; }
 
-        /* --- ENHANCED GLASS CARD --- */
-        .glass-card {
+        /* Profile Section */
+        .bio-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(25px); /* Stronger blur for more depth */
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
-            border-radius: 30px;
+            border-radius: 35px;
             padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             text-align: center;
-            transition: transform 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            margin-bottom: 25px;
         }
 
-        .glass-card:hover { transform: translateY(-5px); }
-
-        .profile-img {
-            width: 130px;
-            height: 130px;
+        .bio-img {
+            width: 130px; height: 130px;
             border-radius: 50%;
-            border: 4px solid white;
+            border: 5px solid white;
             object-fit: cover;
             margin-bottom: 15px;
         }
 
-        h1 { font-size: 1.5rem; margin-bottom: 5px; }
-        .tagline { font-size: 0.95rem; color: #475569; margin-bottom: 20px; font-weight: 500; }
+        /* Service Tiles */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
 
-        /* --- SERVICES GRID --- */
-        .services-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .service-item {
-            background: rgba(255,255,255,0.3);
-            padding: 10px 5px;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            font-weight: 700;
+        .tile {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: bold;
         }
 
-        /* --- QUIZ SECTION --- */
-        .quiz-box { background: rgba(74, 144, 226, 0.15); padding: 20px; border-radius: 20px; margin-top: 20px; border: 1px dashed var(--accent-color); }
-        .btn {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 12px 25px;
+        .assessment-box {
+            background: #ffde59;
+            color: #333;
+            padding: 20px;
             border-radius: 25px;
-            font-weight: 600;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
             cursor: pointer;
-            width: 100%;
-            margin-top: 15px;
-            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
         }
 
-        /* --- FORM STYLING --- */
-        input, select {
+        /* Booking Form */
+        .booking-form {
+            background: white;
+            color: #333;
+            padding: 25px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+        }
+
+        input, select, textarea {
             width: 100%;
             padding: 12px;
-            margin: 8px 0;
-            border-radius: 12px;
-            border: 1px solid rgba(0,0,0,0.1);
-            background: rgba(255,255,255,0.5);
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ddd;
             box-sizing: border-box;
         }
 
-        /* --- NAV BAR --- */
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Bottom Nav */
         .bottom-nav {
             position: fixed;
-            bottom: 20px;
-            width: 90%;
-            max-width: 400px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: space-around;
             padding: 15px;
-            border-radius: 50px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .nav-item { text-decoration: none; color: var(--text-dark); font-size: 0.85rem; font-weight: 600; }
+        .bottom-nav a { color: white; text-decoration: none; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="glass-card">
-        <img src="new-logo.jpeg" class="profile-img" alt="Profile">
-        <h1>Psychologist, NLP Life Coach & Hypnotherapist</h1>
-        <p class="tagline">Helping you unlock the power of your subconscious mind</p>
-        
-        <div class="services-grid">
-            <div class="service-item">NLP Coaching</div>
-            <div class="service-item">Hypnotherapy</div>
-            <div class="service-item">Psychotherapy</div>
-        </div>
-
-        <div class="quiz-box">
-            <h3 style="margin-top: 0;">Not sure where to start?</h3>
-            <p style="font-size: 0.85rem;">Take our quick 2-minute assessment.</p>
-            <button class="btn" onclick="startQuiz()">Start Assessment</button>
-        </div>
+    <div class="bio-card">
+        <img src="https://i.ibb.co/F4p94QZ/new-logo.jpg" class="bio-img" alt="Abdul Rauf">
+        <h2>Abdul Rauf</h2>
+        <div style="font-weight: bold; margin-bottom: 5px;">Psychologist, NLP Life Coach & Hypnotherapist</div>
+        <div style="font-style: italic; font-size: 0.9rem; opacity: 0.8;">Helping you unlock the power of your subconscious mind</div>
     </div>
 
-    <div class="glass-card">
-        <h3>Book Your Session</h3>
-        <form id="bookingForm">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <select>
-                <option>Select Service</option>
-                <option>NLP Coaching</option>
-                <option>Hypnotherapy</option>
-                <option>Psychotherapy</option>
-            </select>
-            <button type="submit" class="btn">Confirm & Select Time</button>
-        </form>
+    <div class="services-grid">
+        <div class="tile">NLP Coaching</div>
+        <div class="tile">Hypnotherapy</div>
+        <div class="tile">Psychotherapy</div>
+        <div class="tile">Mindset Shift</div>
+    </div>
+
+    <div class="assessment-box">
+        🚀 Start Your Mental Health Assessment
+    </div>
+
+    <div class="booking-form">
+        <h3 style="margin-top: 0;">Book a Session</h3>
+        <input type="text" placeholder="Your Name" id="userName">
+        <input type="text" placeholder="WhatsApp Number" id="userWhatsApp">
+        <select id="sessionMode">
+            <option>Select Session Mode</option>
+            <option>Online (Zoom/Meet)</option>
+            <option>In-Person</option>
+        </select>
+        <textarea placeholder="Tell me about your concern..." id="userConcern"></textarea>
+        <button class="whatsapp-btn" onclick="sendToWhatsApp()">Open WhatsApp</button>
     </div>
 </div>
 
-<nav class="bottom-nav">
-    <a href="#" class="nav-item">🏠 Home</a>
-    <a href="tel:+123456789" class="nav-item">📞 Call</a>
-    <a href="https://wa.me/yournumber" class="nav-item">💬 WhatsApp</a>
-</nav>
+<div class="bottom-nav">
+    <a href="#">🏠 Home</a>
+    <a href="tel:+123456789">📞 Call</a>
+    <a href="https://wa.me/yournumber">💬 WhatsApp</a>
+</div>
 
 <script>
-    function startQuiz() {
-        alert("Assessment starting... This would lead to your quiz questions!");
+    function sendToWhatsApp() {
+        const name = document.getElementById('userName').value;
+        const phone = document.getElementById('userWhatsApp').value;
+        const mode = document.getElementById('sessionMode').value;
+        const concern = document.getElementById('userConcern').value;
+        
+        const message = `Hello, I'm ${name}. I'd like to book an ${mode} session. My concern: ${concern}`;
+        const url = `https://wa.me/YOUR_PHONE_NUMBER?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
     }
-
-    document.getElementById('bookingForm').onsubmit = function(e) {
-        e.preventDefault();
-        alert("Data saved! Redirecting to calendar...");
-        window.location.href = "YOUR_CALENDLY_URL_HERE";
-    };
 </script>
 
 </body>
