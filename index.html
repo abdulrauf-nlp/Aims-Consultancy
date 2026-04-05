@@ -15,6 +15,7 @@
             --text-main: #1a2a28; 
             --glass: rgba(255, 255, 255, 0.35);
             --gold-edge: rgba(197, 168, 124, 0.3);
+            --pure-white: #ffffff;
         }
         
         body { 
@@ -25,6 +26,7 @@
             cursor: none;
         }
 
+        /* custom cursor base */
         #custom-cursor {
             width: 20px; height: 20px;
             background: var(--forest-heal);
@@ -38,6 +40,7 @@
         }
         @media (min-width: 768px) { #custom-cursor { display: block; } }
 
+        /* Animated Luxury Background Orbs */
         .bg-orb {
             position: fixed;
             width: 500px; height: 500px;
@@ -64,6 +67,7 @@
 
         .container { max-width: 500px; margin: -140px auto 0 auto; padding: 0 20px 140px 20px; box-sizing: border-box; position: relative; z-index: 2; }
 
+        /* Elite Bio Card & Borderless Image */
         .bio-card {
             background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             border-radius: 40px; padding: 45px 30px; text-align: center;
@@ -74,10 +78,16 @@
         }
 
         .bio-img { 
-            width: 140px; height: 140px; border-radius: 50px; 
-            margin: -110px auto 25px auto; border: 10px solid white; 
-            object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            width: 150px; height: 150px; /* Adjusted size as border is gone */
+            border-radius: 50px; 
+            margin: -110px auto 25px auto; 
+            /* White border and background completely removed here */
+            border: none;
+            background: transparent; 
+            object-fit: cover; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12); /* Kept shadow for depth */
             animation: pulse-luxury 4s infinite ease-in-out;
+            display: block; /* Centers correctly in flex parent */
         }
 
         @keyframes pulse-luxury {
@@ -95,6 +105,7 @@
 
         .section-title { font-size: 12px; font-weight: 700; color: var(--midnight-emerald); text-transform: uppercase; margin: 45px 0 25px 10px; letter-spacing: 3px; opacity: 0.6; }
         
+        /* Service Cards with Etched Montserrat Titles */
         .card { 
             background: rgba(255, 255, 255, 0.35); 
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
@@ -118,12 +129,11 @@
         .icon-hypno { background: #ede7f6; color: #512da8; }
         .icon-psycho { background: #fff3e0; color: #e65100; }
         
-        /* --- UPDATED SERVICE TITLES (Etched Glass Look) --- */
         .card-text b { 
             display: block; 
-            font-family: 'Montserrat', sans-serif; /* Recommended for glass look */
+            font-family: 'Montserrat', sans-serif; 
             font-size: 18px; 
-            font-weight: 700; /* Bold weight for the "etched" effect */
+            font-weight: 700; /* "Etched" look */
             color: var(--midnight-emerald); 
             letter-spacing: 0.5px;
             margin-bottom: 2px;
@@ -132,6 +142,7 @@
 
         .card-text span { font-size: 13px; color: #78909c; font-weight: 500; }
 
+        /* Luxury Quiz Box & Forms */
         .quiz-box { 
             background: var(--midnight-emerald);
             color: var(--champagne-glow); padding: 50px 35px; border-radius: 45px; margin: 50px 0; text-align: center;
@@ -153,12 +164,13 @@
         .faq-answer { display: none; padding-top: 10px; font-size: 14px; color: #546e7a; line-height: 1.5; }
 
         .form-section { background: var(--champagne-glow); padding: 45px 35px; border-radius: 50px; box-shadow: 0 40px 80px rgba(0,0,0,0.12); border: 1px solid #eee; }
-        input, select, textarea { width: 100%; padding: 20px; border: 1px solid #e0e0e0; border-radius: 20px; margin-bottom: 20px; box-sizing: border-box; background: white; font-family: inherit; transition: 0.3s; }
+        input, select, textarea { width: 100%; padding: 20px; border: 1px solid #e0e0e0; border-radius: 20px; margin-bottom: 20px; box-sizing: border-box; background: var(--pure-white); font-family: inherit; transition: 0.3s; }
         input:focus { border-color: #c5a87c; outline: none; box-shadow: 0 0 0 4px rgba(197, 168, 124, 0.1); }
 
-        .btn-main { background: var(--midnight-emerald); color: white; padding: 22px; width: 100%; border: none; border-radius: 25px; font-weight: 700; font-size: 16px; cursor: pointer; transition: 0.4s; letter-spacing: 1px; }
+        .btn-main { background: var(--midnight-emerald); color: var(--pure-white); padding: 22px; width: 100%; border: none; border-radius: 25px; font-weight: 700; font-size: 16px; cursor: pointer; transition: 0.4s; letter-spacing: 1px; }
         .btn-main:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 15px 30px rgba(4, 38, 34, 0.2); }
 
+        /* Navigation */
         .bottom-nav { 
             position: fixed; bottom: 0; left: 0; right: 0; 
             background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
