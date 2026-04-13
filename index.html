@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Abdul Rauf | Mind Sciences Specialist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdulrauf | Mind Sciences Specialist</title>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-    
     <style>
         :root { 
             --midnight-emerald: #042622; 
@@ -26,88 +24,156 @@
             background: #f4f7f6; 
             margin: 0; color: var(--text-main); line-height: 1.6;
             overflow-x: hidden;
+            cursor: none;
         }
 
-        /* Glassmorphism Background */
+        #custom-cursor {
+            width: 20px; height: 20px;
+            background: var(--forest-heal);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.3;
+            transition: transform 0.1s ease-out;
+            display: none;
+        }
+        @media (min-width: 768px) { #custom-cursor { display: block; } }
+
         .bg-orb {
-            position: fixed; width: 500px; height: 500px; border-radius: 50%;
-            filter: blur(100px); z-index: -1; opacity: 0.2;
+            position: fixed;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.2;
             animation: move 30s infinite alternate ease-in-out;
         }
         .orb-1 { background: #c5a87c; top: -10%; left: -10%; }
-        .orb-2 { background: #004d40; bottom: 0%; right: -5%; }
-        @keyframes move { from { transform: translate(0, 0); } to { transform: translate(100px, 150px); } }
+        .orb-2 { background: #004d40; bottom: 0%; right: -5%; animation-delay: -10s; }
+
+        @keyframes move {
+            from { transform: translate(0, 0) rotate(0deg); }
+            to { transform: translate(100px, 150px) rotate(30deg); }
+        }
 
         header { 
             background: linear-gradient(180deg, var(--midnight-emerald) 0%, var(--deep-ocean) 100%); 
             padding: 120px 20px 160px 20px; text-align: center; 
             border-bottom-left-radius: 80px; border-bottom-right-radius: 80px;
+            position: relative;
         }
 
-        .container { max-width: 500px; margin: -140px auto 0 auto; padding: 0 20px 140px 20px; position: relative; z-index: 2; }
+        .container { max-width: 500px; margin: -140px auto 0 auto; padding: 0 20px 140px 20px; box-sizing: border-box; position: relative; z-index: 2; }
 
-        /* Bio Card */
         .bio-card {
             background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             border-radius: 40px; padding: 45px 30px; text-align: center;
             box-shadow: 0 30px 60px rgba(0,0,0,0.08); margin-bottom: 35px;
             border: 1px solid var(--gold-edge);
+            transition: transform 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            perspective: 1000px;
         }
+
         .bio-img { 
             width: 140px; height: 140px; border-radius: 50px; 
-            margin: -110px auto 25px auto; object-fit: cover; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            margin: -110px auto 25px auto; border: 10px solid white; 
+            object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            animation: pulse-luxury 4s infinite ease-in-out;
         }
-        .bio-card h3 { font-family: 'Instrument Serif', serif; margin: 10px 0 5px 0; color: var(--midnight-emerald); font-size: 38px; font-weight: 400; font-style: italic; }
-        .tagline-primary { font-size: 14px; color: var(--forest-heal); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; display: block; }
-        .tagline-secondary { font-size: 16px; color: #546e7a; font-weight: 300; font-style: italic; }
 
-        /* Service Cards */
-        .section-title { font-size: 12px; font-weight: 700; color: var(--midnight-emerald); text-transform: uppercase; margin: 45px 0 25px 10px; letter-spacing: 3px; opacity: 0.6; }
-        .card { 
-            background: rgba(255, 255, 255, 0.35); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border-radius: 30px; padding: 25px; margin-bottom: 20px; display: flex; align-items: center; gap: 20px; cursor: pointer; 
-            border: 1px solid rgba(255,255,255,0.6); transition: 0.3s;
+        @keyframes pulse-luxury {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); box-shadow: 0 25px 50px rgba(0, 77, 64, 0.2); }
         }
-        .card:hover { transform: translateY(-5px); border-color: #c5a87c; }
-        .card-icon { width: 55px; height: 55px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+
+        .bio-card h3 { 
+            font-family: 'Instrument Serif', serif; 
+            margin: 10px 0 5px 0; color: var(--midnight-emerald); 
+            font-size: 38px; font-weight: 400; font-style: italic;
+        }
+        .bio-card .tagline-primary { font-size: 14px; color: var(--forest-heal); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; display: block; }
+        .bio-card .tagline-secondary { font-size: 16px; color: #546e7a; font-weight: 300; font-style: italic; }
+
+        .section-title { font-size: 12px; font-weight: 700; color: var(--midnight-emerald); text-transform: uppercase; margin: 45px 0 25px 10px; letter-spacing: 3px; opacity: 0.6; }
+        
+        .card { 
+            background: rgba(255, 255, 255, 0.35); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-radius: 30px; padding: 28px; margin-bottom: 20px; 
+            display: flex; align-items: center; gap: 20px; cursor: pointer; 
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        .card:hover { 
+            transform: scale(1.02) translateY(-5px); 
+            background: rgba(255, 255, 255, 0.6); 
+            border-color: #c5a87c; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .card-icon { width: 60px; height: 60px; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 24px; transition: 0.3s; }
+        .card:hover .card-icon { transform: rotate(-10deg); }
+
         .icon-nlp { background: #e0f2f1; color: #00695c; }
         .icon-hypno { background: #ede7f6; color: #512da8; }
         .icon-psycho { background: #fff3e0; color: #e65100; }
-        .card-text b { display: block; font-family: 'Instrument Serif', serif; font-size: 22px; color: var(--midnight-emerald); }
-        .card-text span { font-size: 13px; color: #78909c; }
+        
+        .card-text b { display: block; font-size: 19px; color: var(--midnight-emerald); font-family: 'Instrument Serif', serif; font-size: 22px; }
+        .card-text span { font-size: 13px; color: #78909c; font-weight: 500; }
 
-        /* Quiz Box */
         .quiz-box { 
-            background: var(--midnight-emerald); color: var(--champagne-glow); padding: 45px 30px; border-radius: 40px; margin: 50px 0; text-align: center;
+            background: var(--midnight-emerald);
+            color: var(--champagne-glow); padding: 50px 35px; border-radius: 45px; margin: 50px 0; text-align: center;
+            box-shadow: 0 25px 50px rgba(4, 38, 34, 0.3);
+            border: 1px solid rgba(197, 168, 124, 0.2);
         }
-        .quiz-box h4 { font-family: 'Instrument Serif', serif; font-size: 28px; margin: 0 0 10px 0; }
+        .quiz-box h4 { font-family: 'Instrument Serif', serif; font-size: 30px; margin: 0 0 10px 0; font-weight: 400; }
+
         .btn-outline { 
-            background: transparent; border: 1px solid #c5a87c; color: #c5a87c; padding: 15px; border-radius: 20px; width: 100%; cursor: pointer; text-transform: uppercase; font-weight: 700; font-size: 11px; margin-top: 15px;
+            background: transparent; border: 1px solid #c5a87c; color: #c5a87c; 
+            padding: 18px; border-radius: 25px; font-weight: 700; cursor: pointer; width: 100%; margin-top: 15px;
+            text-transform: uppercase; letter-spacing: 2px; font-size: 12px; transition: 0.3s;
         }
+        .btn-outline:hover { background: #c5a87c; color: var(--midnight-emerald); }
 
-        /* FAQ */
-        .faq-item { background: rgba(255, 255, 255, 0.5); border-radius: 20px; padding: 20px; margin-bottom: 12px; cursor: pointer; border: 1px solid rgba(255,255,255,0.4); }
-        .faq-question { font-weight: 700; font-size: 14px; display: flex; justify-content: space-between; }
+        .faq-item { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); border-radius: 25px; padding: 22px; margin-bottom: 15px; cursor: pointer; border: 1px solid rgba(255,255,255,0.4); transition: 0.3s; }
+        .faq-item:hover { background: rgba(255, 255, 255, 0.8); }
+        .faq-question { font-weight: 700; font-size: 15px; color: var(--midnight-emerald); display: flex; justify-content: space-between; align-items: center; }
 
-        /* Booking Form */
-        .form-section { background: var(--champagne-glow); padding: 40px 30px; border-radius: 45px; box-shadow: 0 40px 80px rgba(0,0,0,0.1); }
-        input, select, textarea { width: 100%; padding: 18px; border: 1px solid #e0e0e0; border-radius: 20px; margin-bottom: 15px; box-sizing: border-box; font-family: inherit; }
-        .btn-main { background: var(--midnight-emerald); color: white; padding: 20px; width: 100%; border: none; border-radius: 20px; font-weight: 700; cursor: pointer; }
+        .form-section { background: var(--champagne-glow); padding: 45px 35px; border-radius: 50px; box-shadow: 0 40px 80px rgba(0,0,0,0.12); border: 1px solid #eee; }
+        input, select, textarea { width: 100%; padding: 20px; border: 1px solid #e0e0e0; border-radius: 20px; margin-bottom: 20px; box-sizing: border-box; background: white; font-family: inherit; transition: 0.3s; }
+        input:focus { border-color: #c5a87c; outline: none; box-shadow: 0 0 0 4px rgba(197, 168, 124, 0.1); }
 
-        /* MOBILE CALENDLY FIX */
-        #calendly-inline-container { display: none; width: 100%; height: 750px; border-radius: 30px; overflow: hidden; margin-top: 15px; }
+        .btn-main { background: var(--midnight-emerald); color: white; padding: 22px; width: 100%; border: none; border-radius: 25px; font-weight: 700; font-size: 16px; cursor: pointer; transition: 0.4s; letter-spacing: 1px; }
+        .btn-main:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 15px 30px rgba(4, 38, 34, 0.2); }
 
         .bottom-nav { 
-            position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px);
-            display: flex; justify-content: space-around; padding: 15px 0 35px 0; border-radius: 40px 40px 0 0; z-index: 100;
+            position: fixed; bottom: 0; left: 0; right: 0; 
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
+            display: flex; justify-content: space-around; padding: 15px 0 35px 0; 
+            border-top: 1px solid rgba(0,0,0,0.03); border-radius: 45px 45px 0 0; z-index: 100;
         }
-        .nav-link { text-align: center; text-decoration: none; color: #94a3b8; font-size: 9px; font-weight: 700; flex: 1; }
-        .nav-link i { font-size: 22px; margin-bottom: 5px; color: #cbd5e1; }
+        .nav-link { text-align: center; text-decoration: none; color: #94a3b8; font-size: 10px; font-weight: 700; flex: 1; letter-spacing: 1px; }
+        .nav-link i { font-size: 22px; margin-bottom: 8px; color: #cbd5e1; transition: 0.3s; }
+        .nav-link:hover i { color: var(--forest-heal); }
+
+        #home-screen, #quiz-screen, #booking-form { transition: opacity 0.5s ease; }
+        
+        /* Inline Calendar Styling Fixes */
+        #calendly-inline-container { 
+            display: none; 
+            width: 100%; 
+            min-height: 650px; 
+            border-radius: 30px; 
+            margin-top: 10px; 
+        }
     </style>
 </head>
 <body>
 
+<div id="custom-cursor"></div>
 <div class="bg-orb orb-1"></div>
 <div class="bg-orb orb-2"></div>
 
@@ -115,7 +181,7 @@
 
 <div class="container">
     <div id="home-screen">
-        <div class="bio-card">
+        <div class="bio-card" id="main-bio">
             <img src="new-logo.jpeg" class="bio-img" alt="Abdul Rauf">
             <h3>Abdul Rauf</h3>
             <span class="tagline-primary">Psychologist, NLP Life Coach & Hypnotherapist</span>
@@ -123,62 +189,85 @@
         </div>
 
         <div class="section-title">Therapeutic Excellence</div>
-        <div class="card" onclick="openForm('NLP Breakthrough')">
+        <div class="card" onclick="runLogic('NLP Breakthrough')">
             <div class="card-icon icon-nlp"><i class="fas fa-brain"></i></div>
             <div class="card-text"><b>NLP Coaching</b><span>Rewrite mental programs</span></div>
         </div>
-        <div class="card" onclick="openForm('Hypnotherapy')">
+        <div class="card" onclick="runLogic('Hypnotherapy')">
             <div class="card-icon icon-hypno"><i class="fas fa-eye"></i></div>
             <div class="card-text"><b>Hypnotherapy</b><span>Deep healing for habits</span></div>
         </div>
-        <div class="card" onclick="openForm('Psychotherapy')">
+        <div class="card" onclick="runLogic('Psychotherapy')">
             <div class="card-icon icon-psycho"><i class="fas fa-user-shield"></i></div>
             <div class="card-text"><b>Psychotherapy</b><span>Clinical emotional resilience</span></div>
         </div>
 
         <div class="quiz-box">
             <h4>Not sure where to start?</h4>
-            <p style="font-size: 14px; opacity: 0.8;">Experience a tailored approach to your mental evolution.</p>
+            <p style="font-size: 15px; opacity: 0.8; font-weight: 300;">Experience a tailored approach to your mental evolution.</p>
             <button class="btn-outline" onclick="startQuiz()">Begin Assessment</button>
         </div>
 
         <div class="section-title">Practitioner FAQ</div>
         <div class="faq-item" onclick="toggleFaq(this)">
             <div class="faq-question">Is the session confidential? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer" style="display:none; font-size: 13px; margin-top:10px;">Absolutely. We follow strict international ethical standards for privacy.</div>
+            <div class="faq-answer" style="display:none;">Absolutely. We follow strict international ethical standards for privacy and data protection.</div>
         </div>
         <div class="faq-item" onclick="toggleFaq(this)">
             <div class="faq-question">How many sessions will I need? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer" style="display:none; font-size: 13px; margin-top:10px;">Many clients experience breakthroughs within 3 to 5 sessions.</div>
+            <div class="faq-answer" style="display:none;">While it varies, many clients experience a significant breakthrough within 3 to 5 sessions.</div>
         </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">Can I do sessions online? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer" style="display:none;">Yes, NLP and Hypnotherapy are highly effective via Zoom or Video Call.</div>
+        </div>
+
+        <p style="text-align:center; font-size: 10px; color: #94a3b8; margin: 60px 0 20px 0; text-transform: uppercase; letter-spacing: 3px; font-weight: 700;">AIMS • Abdulrauf Institute of Mind Sciences</p>
     </div>
 
     <div id="quiz-screen" class="form-section" style="display:none;">
         <button onclick="showHome()" style="border:none; background:none; color:#999; cursor:pointer; margin-bottom:20px;"><i class="fas fa-arrow-left"></i> BACK</button>
-        <h3 style="text-align:center; font-family:'Instrument Serif', serif; font-size: 30px;">Assessment</h3>
-        <p style="text-align:center; font-weight:500;">What is your primary goal?</p>
-        <button class="btn-main" style="background:#fff; color:#333; border:1px solid #eee; margin-bottom:10px;" onclick="quizFinish('Hypnotherapy')">Overcoming a Habit/Fear</button>
-        <button class="btn-main" style="background:#fff; color:#333; border:1px solid #eee; margin-bottom:10px;" onclick="quizFinish('NLP Breakthrough')">Peak Performance</button>
-        <button class="btn-main" style="background:#fff; color:#333; border:1px solid #eee;" onclick="quizFinish('Psychotherapy')">Emotional Healing</button>
+        <h3 style="text-align:center; font-family:'Instrument Serif', serif; font-size: 32px;">Assessment</h3>
+        <p id="quiz-question" style="text-align:center; font-weight:500;">What is your primary goal?</p>
+        <div id="quiz-options">
+            <button class="btn-main" style="margin-bottom:12px; background:#f9f9f9; color:#333; border: 1px solid #eee;" onclick="quizResult('Hypnotherapy')">Overcoming a Habit/Fear</button>
+            <button class="btn-main" style="margin-bottom:12px; background:#f9f9f9; color:#333; border: 1px solid #eee;" onclick="quizResult('NLP Breakthrough')">Peak Performance & Career</button>
+            <button class="btn-main" style="margin-bottom:12px; background:#f9f9f9; color:#333; border: 1px solid #eee;" onclick="quizResult('Psychotherapy')">Deep Emotional Healing</button>
+        </div>
     </div>
 
-    <div id="booking-screen" class="form-section" style="display:none;">
+    <div id="booking-form" class="form-section" style="display:none;">
         <button onclick="showHome()" style="border:none; background:none; color:#999; cursor:pointer; margin-bottom:20px;"><i class="fas fa-arrow-left"></i> BACK</button>
         <h3 id="service-title" style="text-align:center; margin-top:0; font-family:'Instrument Serif', serif; font-size: 32px;">Secure Your Slot</h3>
+        <p id="quiz-suggestion" style="text-align:center; color:var(--forest-heal); font-size:13px; font-weight:700;"></p>
         
         <div id="form-inputs">
-            <input type="text" id="client-name" placeholder="Full Name">
-            <input type="tel" id="client-phone" placeholder="WhatsApp Number">
+            <input type="hidden" id="hidden-service">
+            <label style="font-size:11px; font-weight:700; color:#999; letter-spacing: 1px;">FULL NAME</label>
+            <input type="text" id="client-name" placeholder="Ex: John Doe">
+            
+            <label style="font-size:11px; font-weight:700; color:#999; letter-spacing: 1px;">WHATSAPP NUMBER</label>
+            <input type="tel" id="client-phone" placeholder="03XXXXXXXXX">
+            
+            <div id="logic-box" style="display:none; background:rgba(197, 168, 124, 0.05); padding:20px; border-radius:20px; margin-bottom:20px; border: 1px solid rgba(197, 168, 124, 0.1);">
+                <label id="logic-label" style="color:var(--forest-heal); font-size:11px; font-weight:700;">Special Question</label>
+                <input type="text" id="logic-answer" placeholder="Your answer..." style="margin-top:10px; margin-bottom:0;">
+            </div>
+
+            <label style="font-size:11px; font-weight:700; color:#999; letter-spacing: 1px;">SESSION MODE</label>
             <select id="session-mode">
-                <option value="Online">Online (Video Call)</option>
-                <option value="In-Person">In-Person (Clinic)</option>
+                <option value="Online (Video Call)">Online (Video Call)</option>
+                <option value="In-Person (Clinic)">In-Person (Clinic)</option>
             </select>
-            <textarea id="client-goal" rows="3" placeholder="How can I help you?"></textarea>
-            <button class="btn-main" onclick="confirmAndBook()">Confirm & Select Time</button>
+            
+            <label style="font-size:11px; font-weight:700; color:#999; letter-spacing: 1px;">DESCRIBE YOUR CONCERN</label>
+            <textarea id="client-goal" rows="3" placeholder="Briefly explain your vision for this change..."></textarea>
+            
+            <button class="btn-main" onclick="submitAndBook()">Confirm & Select Time <i class="fas fa-calendar-alt" style="margin-left:10px;"></i></button>
         </div>
 
         <div id="calendly-inline-container">
-            <div class="calendly-inline-widget" id="calendly-target" style="width:100%; height:100%;"></div>
+            <div class="calendly-inline-widget" id="calendly-target" style="min-width:320px; height:630px;"></div>
         </div>
     </div>
 </div>
@@ -190,56 +279,118 @@
 </div>
 
 <script>
-    const CAL_URL = "https://calendly.com/abdulrauf-nlp/book-your-session";
-    const SCRIPT = "https://script.google.com/macros/s/AKfycbxqgxPJXnGiVndINcc8OoeuKAtDx5VYd0iasv0LvxAeK16p2Eg_NgurUKVlbouH3zVWNQ/exec";
+    const MY_CALENDLY_URL = "https://calendly.com/abdulrauf-nlp/book-your-session?month=2026-04"; 
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqgxPJXnGiVndINcc8OoeuKAtDx5VYd0iasv0LvxAeK16p2Eg_NgurUKVlbouH3zVWNQ/exec";
+
+    const cursor = document.getElementById('custom-cursor');
+    document.addEventListener('mousemove', e => {
+        cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+    });
 
     function toggleFaq(el) {
-        const ans = el.querySelector('.faq-answer');
-        ans.style.display = ans.style.display === 'none' ? 'block' : 'none';
+        const answer = el.querySelector('.faq-answer');
+        const icon = el.querySelector('i');
+        const isVisible = answer.style.display === 'block';
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+        document.querySelectorAll('.faq-item i').forEach(i => i.style.transform = 'rotate(0deg)');
+        if(!isVisible) {
+            answer.style.display = 'block';
+            icon.style.transform = 'rotate(180deg)';
+        }
     }
 
     function startQuiz() {
-        document.getElementById('home-screen').style.display = 'none';
-        document.getElementById('quiz-screen').style.display = 'block';
+        const home = document.getElementById('home-screen');
+        home.style.opacity = '0';
+        setTimeout(() => {
+            home.style.display = 'none';
+            const quiz = document.getElementById('quiz-screen');
+            quiz.style.display = 'block';
+            quiz.style.opacity = '0';
+            setTimeout(() => { quiz.style.opacity = '1'; }, 50);
+        }, 300);
     }
 
-    function quizFinish(service) {
-        document.getElementById('quiz-screen').style.display = 'none';
-        openForm(service);
+    function quizResult(service) {
+        document.getElementById('quiz-screen').style.opacity = '0';
+        setTimeout(() => {
+            document.getElementById('quiz-screen').style.display = 'none';
+            runLogic(service, true);
+        }, 300);
     }
 
-    function openForm(service) {
+    function runLogic(serviceName, fromQuiz = false) {
         document.getElementById('home-screen').style.display = 'none';
-        document.getElementById('booking-screen').style.display = 'block';
-        document.getElementById('service-title').innerText = service;
+        const form = document.getElementById('booking-form');
+        form.style.display = 'block';
+        form.style.opacity = '0';
+        setTimeout(() => { form.style.opacity = '1'; }, 50);
+
+        document.getElementById('service-title').innerText = serviceName;
+        document.getElementById('hidden-service').value = serviceName;
+        document.getElementById('quiz-suggestion').innerText = fromQuiz ? "Recommendation: " + serviceName : "";
+
+        const box = document.getElementById('logic-box');
+        const label = document.getElementById('logic-label');
+        if(serviceName === 'Hypnotherapy') {
+            box.style.display = 'block'; label.innerText = "Have you experienced hypnosis before?";
+        } else if (serviceName === 'NLP Breakthrough') {
+            box.style.display = 'block'; label.innerText = "What is your main mental hurdle?";
+        } else if (serviceName === 'Psychotherapy') {
+            box.style.display = 'block'; label.innerText = "Is this your first time in therapy?";
+        } else { box.style.display = 'none'; }
         window.scrollTo(0,0);
     }
 
-    function showHome() { location.reload(); }
+    function showHome() {
+        location.reload();
+    }
 
-    function confirmAndBook() {
+    async function submitAndBook() {
+        const service = document.getElementById('hidden-service').value;
         const name = document.getElementById('client-name').value;
         const phone = document.getElementById('client-phone').value;
-        const service = document.getElementById('service-title').innerText;
+        const mode = document.getElementById('session-mode').value;
+        const goal = document.getElementById('client-goal').value;
+        const extra = document.getElementById('logic-answer').value || "N/A";
 
-        if(!name || !phone) { alert("Please enter name and phone."); return; }
+        if(!name || !phone) { alert("Please enter your name and phone."); return; }
 
-        fetch(SCRIPT, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ name, phone, service }) });
+        fetch(SCRIPT_URL, { 
+            method: 'POST', 
+            mode: 'no-cors', 
+            body: JSON.stringify({ service, name, phone, mode, goal, extra }) 
+        });
 
+        // Hide inputs immediately
         document.getElementById('form-inputs').style.display = 'none';
+        
+        // Change title and show container
         document.getElementById('service-title').innerText = "Pick Your Time";
-        document.getElementById('calendly-inline-container').style.display = 'block';
+        const calendarContainer = document.getElementById('calendly-inline-container');
+        calendarContainer.style.display = 'block';
 
-        // THE MOBILE FIX: Delay initialization so the container is fully rendered
-        setTimeout(() => {
-            if (window.Calendly) {
-                Calendly.initInlineWidget({
-                    url: CAL_URL,
-                    parentElement: document.getElementById('calendly-target'),
-                    prefill: { name: name }
-                });
-            }
-        }, 600);
+        // Check if Calendly script is loaded before calling it
+        if (typeof Calendly !== 'undefined') {
+            Calendly.initInlineWidget({
+                url: MY_CALENDLY_URL,
+                parentElement: document.getElementById('calendly-target'),
+                prefill: {
+                    name: name
+                }
+            });
+        } else {
+            // If script isn't loaded yet, wait 1 second and try again
+            setTimeout(() => {
+                if (typeof Calendly !== 'undefined') {
+                    Calendly.initInlineWidget({
+                        url: MY_CALENDLY_URL,
+                        parentElement: document.getElementById('calendly-target'),
+                        prefill: { name: name }
+                    });
+                }
+            }, 1000);
+        }
     }
 </script>
 </body>
