@@ -411,7 +411,7 @@
 
         .btn-main {
             width: 100%; padding: 20px;
-            background: var(--deep); color: var(--cream);
+            background: #075e54; color: var(--cream);
             border: none; border-radius: 18px;
             font-family: 'DM Sans', sans-serif;
             font-size: 15px; font-weight: 700; letter-spacing: 0.5px;
@@ -420,8 +420,8 @@
         }
         .btn-main:hover {
             transform: translateY(-3px);
-            box-shadow: 0 16px 40px rgba(6,20,18,0.22);
-            background: var(--forest);
+            box-shadow: 0 16px 40px rgba(7,94,84,0.28);
+            background: #128c7e;
         }
         .form-note { text-align: center; font-size: 10px; color: #b0b8c1; margin-top: 14px; letter-spacing: 1.5px; text-transform: uppercase; }
 
@@ -531,8 +531,7 @@
             <div class="bio-sub">"Helping you unlock the transformative power of your subconscious mind"</div>
 
             <div class="trust-strip">
-                <div class="trust-badge"><i class="fas fa-certificate"></i> Certified NLP</div>
-                <div class="trust-badge"><i class="fas fa-star"></i> 10+ Yrs Exp</div>
+                <div class="trust-badge"><i class="fas fa-star"></i> 8+ Yrs Exp</div>
                 <div class="trust-badge"><i class="fas fa-globe"></i> Online & In-Person</div>
             </div>
         </div>
@@ -720,9 +719,9 @@
         </div>
 
         <button class="btn-main" onclick="submitBooking()" id="submit-btn">
-            <i class="fas fa-calendar-check"></i> Confirm & Choose Time
+            <i class="fab fa-whatsapp"></i> Confirm via WhatsApp
         </button>
-        <p class="form-note">You'll be redirected to select your preferred time slot</p>
+        <p class="form-note">Your details will be sent directly to Abdul Rauf on WhatsApp</p>
     </div>
 
 </div><!-- /container -->
@@ -738,7 +737,6 @@
     <button class="nav-btn active" onclick="showHome()"><i class="fas fa-home"></i>Home</button>
     <a href="tel:923005364319" class="nav-btn"><i class="fas fa-phone-alt"></i>Call</a>
     <a href="https://wa.me/923005364319" class="nav-btn whatsapp"><i class="fab fa-whatsapp"></i>WhatsApp</a>
-    <a href="https://instagram.com/yourhandle" class="nav-btn"><i class="fab fa-instagram"></i>Follow</a>
 </div>
 
 
@@ -881,14 +879,14 @@
         fadeOut(document.getElementById('quiz-screen'), () => openBooking(service, true));
     }
 
-    // ── Submit ──
+    // ── Submit via WhatsApp ──
     async function submitBooking() {
-        const name  = document.getElementById('f-name').value.trim();
-        const phone = document.getElementById('f-phone').value.trim();
+        const name    = document.getElementById('f-name').value.trim();
+        const phone   = document.getElementById('f-phone').value.trim();
         const service = document.getElementById('h-service').value;
-        const mode  = document.getElementById('f-mode').value;
-        const goal  = document.getElementById('f-goal').value;
-        const extra = document.getElementById('f-extra').value || 'N/A';
+        const mode    = document.getElementById('f-mode').value;
+        const goal    = document.getElementById('f-goal').value.trim();
+        const extra   = document.getElementById('f-extra').value.trim() || 'N/A';
 
         if (!name || !phone) {
             showToast('Please fill in your name and phone number');
@@ -900,9 +898,10 @@
         }
 
         const btn = document.getElementById('submit-btn');
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening WhatsApp...';
         btn.disabled = true;
 
+        // Also log to Google Sheets silently
         try {
             fetch(SHEETS_URL, {
                 method: 'POST', mode: 'no-cors',
@@ -910,10 +909,26 @@
             });
         } catch(e) {}
 
+        // Build a clean, professional WhatsApp message
+        const msg = [
+            `🌿 *New Session Request — AIMS*`,
+            ``,
+            `*Name:* ${name}`,
+            `*Phone:* ${phone}`,
+            `*Service:* ${service}`,
+            `*Mode:* ${mode}`,
+            `*Concern:* ${goal || 'Not specified'}`,
+            `*Extra:* ${extra}`,
+            ``,
+            `_Sent via AIMS website_`
+        ].join('\n');
+
+        const waURL = `https://wa.me/923005364319?text=${encodeURIComponent(msg)}`;
+
         setTimeout(() => {
-            showToast('Booking confirmed! Redirecting to calendar...');
-            setTimeout(() => { window.location.href = CALENDLY_URL; }, 1500);
-        }, 600);
+            showToast('Redirecting to WhatsApp...');
+            setTimeout(() => { window.location.href = waURL; }, 1200);
+        }, 500);
     }
 </script>
 </body>
