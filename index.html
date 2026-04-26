@@ -9,17 +9,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --ink: #0d1f1d;
-            --deep: #061412;
-            --forest: #0a3d35;
-            --sage: #1a5c50;
-            --gold: #c8a96e;
+            /* ══ ROYAL INDIGO PALETTE (APPLIED) ══ */
+            --bg-main: #0B1120;           /* Deep Midnight Blue (Background) */
+            --glass-tint: rgba(148, 163, 184, 0.1); /* Cool Steel-Blue (Glass tint) */
+            --text-primary: #F8FAFC;      /* Ghost White (Main Text) */
+            --text-accent: #94A3B8;       /* Polished Silver (Titles/Roles) */
+            --text-secondary: #64748B;    /* Cool Grey (Descriptions) */
+
+            /* Maintain Functional Colors & Adjusting derived colors */
+            --ink: var(--text-primary);
+            --deep: #070a14;             /* Darker than BG for header depth */
+            --forest: #0d162b;            /* Adjusting existing gradients to the theme */
+            --sage: var(--text-accent);
+            --gold: #c8a96e;              /* Maintain for star/check icons & small highlights */
             --gold-light: #e8d4aa;
-            --cream: #faf8f4;
-            --mist: #f2efe9;
-            --glass: rgba(255,255,255,0.55);
-            --border: rgba(200, 169, 110, 0.25);
-            --shadow: rgba(6, 20, 18, 0.12);
+            --cream: #141b2e;             /* Adapting form background */
+            --mist: var(--bg-main);       /* Primary Page background */
+            
+            /* Glassmorphism Variables updated to Indigo theme */
+            --glass: var(--glass-tint);
+            --border: rgba(148, 163, 1 slate:84, 0.2); /* Integrated silver-grey border */
+            --shadow: rgba(0, 0, 0, 0.4);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,13 +66,13 @@
         }
         @media (min-width: 768px) { #cursor-dot, #cursor-ring { display: block; } }
 
-        /* ── Background Orbs ── */
+        /* ── Background Orbs (Updated Colors for Indigo Theme) ── */
         .orb {
             position: fixed; border-radius: 50%;
             filter: blur(90px); z-index: 0; pointer-events: none;
         }
-        .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(10,61,53,0.18), transparent); top: -200px; left: -200px; animation: drift 25s infinite alternate ease-in-out; }
-        .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(200,169,110,0.1), transparent); bottom: -100px; right: -100px; animation: drift 30s infinite alternate-reverse ease-in-out; }
+        .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(148,163,184,0.12), transparent); top: -200px; left: -200px; animation: drift 25s infinite alternate ease-in-out; }
+        .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(200,169,110,0.06), transparent); bottom: -100px; right: -100px; animation: drift 30s infinite alternate-reverse ease-in-out; }
         @keyframes drift { from { transform: translate(0,0); } to { transform: translate(80px, 120px); } }
 
         /* ── Header ── */
@@ -77,7 +87,7 @@
         header::before {
             content: '';
             position: absolute; inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a96e' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         /* ── Container ── */
@@ -110,7 +120,8 @@
             padding: 50px 32px 40px;
             text-align: center;
             border: 1px solid var(--border);
-            box-shadow: 0 40px 80px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.8);
+            /* Softened shadow to fit dark theme */
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
             margin-bottom: 28px;
             perspective: 1200px;
         }
@@ -120,8 +131,9 @@
             margin: -110px auto 24px;
             border-radius: 40px;
             padding: 5px;
-            background: linear-gradient(145deg, var(--gold), var(--cream), var(--gold-light));
-            box-shadow: 0 20px 50px rgba(200,169,110,0.3);
+            /* Updated gradient for Indigo theme matching Gold */
+            background: linear-gradient(145deg, var(--gold), var(--forest), var(--gold-light));
+            box-shadow: 0 20px 50px rgba(200,169,110,0.2);
             animation: float 5s ease-in-out infinite;
         }
         @keyframes float {
@@ -133,7 +145,8 @@
             width: 100%; height: 100%;
             border-radius: 36px;
             object-fit: cover;
-            background: linear-gradient(135deg, var(--forest) 0%, var(--sage) 100%);
+            /* Update backup background gradient */
+            background: linear-gradient(135deg, var(--deep) 0%, var(--forest) 100%);
             display: flex; align-items: center; justify-content: center;
         }
 
@@ -141,9 +154,9 @@
         .bio-img-fallback {
             width: 100%; height: 100%;
             border-radius: 36px;
-            background: linear-gradient(135deg, var(--forest), var(--sage));
+            background: linear-gradient(135deg, var(--forest), var(--deep));
             display: flex; align-items: center; justify-content: center;
-            font-size: 48px; color: var(--gold-light);
+            font-size: 48px; color: var(--text-accent);
         }
 
         .bio-name {
@@ -153,24 +166,25 @@
         }
         .bio-role {
             font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
-            text-transform: uppercase; color: var(--sage); margin-bottom: 10px;
+            text-transform: uppercase; color: var(--text-accent); margin-bottom: 10px;
         }
         .bio-sub {
-            font-size: 15px; color: #607d7b; font-weight: 300; font-style: italic; line-height: 1.5;
+            font-size: 15px; color: var(--text-secondary); font-weight: 300; font-style: italic; line-height: 1.5;
         }
 
         /* ── Trust Badges ── */
         .trust-strip {
             display: flex; justify-content: center; gap: 16px;
             flex-wrap: wrap; margin-top: 24px; padding-top: 22px;
-            border-top: 1px solid rgba(200,169,110,0.15);
+            border-top: 1px solid rgba(148,163,184,0.1);
         }
         .trust-badge {
             display: flex; align-items: center; gap: 6px;
-            background: rgba(10,61,53,0.06);
-            border: 1px solid rgba(10,61,53,0.1);
+            /* Updated colors for indigo */
+            background: rgba(148,163,184,0.06);
+            border: 1px solid rgba(148,163,184,0.1);
             border-radius: 100px; padding: 6px 14px;
-            font-size: 11px; font-weight: 700; color: var(--sage);
+            font-size: 11px; font-weight: 700; color: var(--text-accent);
             letter-spacing: 0.5px;
         }
         .trust-badge i { font-size: 10px; color: var(--gold); }
@@ -178,13 +192,13 @@
         /* ── Section Label ── */
         .section-label {
             font-size: 10px; font-weight: 700; letter-spacing: 3px;
-            text-transform: uppercase; color: var(--ink); opacity: 0.4;
+            text-transform: uppercase; color: var(--text-secondary); opacity: 0.6;
             margin: 40px 0 18px 4px;
         }
 
         /* ── Service Cards ── */
         .service-card {
-            background: rgba(255,255,255,0.5);
+            background: var(--glass);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-radius: 28px;
@@ -192,22 +206,22 @@
             margin-bottom: 14px;
             display: flex; align-items: center; gap: 18px;
             cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.65);
+            border: 1px solid var(--border);
             transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative; overflow: hidden;
         }
         .service-card::after {
             content: '';
             position: absolute; inset: 0;
-            background: linear-gradient(120deg, transparent, rgba(200,169,110,0.05), transparent);
+            background: linear-gradient(120deg, transparent, rgba(148,163,184,0.05), transparent);
             opacity: 0;
             transition: opacity 0.3s;
         }
         .service-card:hover {
             transform: translateY(-5px) scale(1.01);
-            background: rgba(255,255,255,0.75);
-            border-color: rgba(200,169,110,0.4);
-            box-shadow: 0 20px 40px var(--shadow);
+            background: rgba(148,163,184,0.15);
+            border-color: rgba(148,163,184,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         .service-card:hover::after { opacity: 1; }
         .service-card:hover .svc-arrow { transform: translateX(4px); opacity: 1; }
@@ -220,9 +234,10 @@
         }
         .service-card:hover .svc-icon { transform: rotate(-8deg) scale(1.05); }
 
-        .icon-nlp { background: #e5f3f1; color: #0a6659; }
-        .icon-hyp { background: #ede7f6; color: #5e35b1; }
-        .icon-psy { background: #fef3e0; color: #c47a00; }
+        /* Updated Icon Box Colors for dark theme */
+        .icon-nlp { background: rgba(148,163,184,0.1); color: var(--text-accent); }
+        .icon-hyp { background: rgba(94,53,177,0.15); color: #9575cd; }
+        .icon-psy { background: rgba(200,169,110,0.1); color: var(--gold-light); }
 
         .svc-info { flex: 1; }
         .svc-name {
@@ -230,13 +245,13 @@
             font-size: 22px; font-weight: 600; color: var(--ink);
             display: block; margin-bottom: 3px;
         }
-        .svc-desc { font-size: 12px; color: #7a9693; font-weight: 500; }
+        .svc-desc { font-size: 12px; color: var(--text-secondary); font-weight: 500; }
         .svc-duration {
             font-size: 10px; font-weight: 700; letter-spacing: 1px;
-            color: var(--gold); text-transform: uppercase; margin-top: 4px; display: block;
+            color: var(--gold-light); text-transform: uppercase; margin-top: 4px; display: block;
         }
         .svc-arrow {
-            color: var(--gold); font-size: 14px;
+            color: var(--gold-light); font-size: 14px;
             opacity: 0.4; transition: all 0.3s;
         }
 
@@ -247,24 +262,24 @@
         .stat-card {
             flex: 1; background: var(--deep);
             border-radius: 24px; padding: 22px 16px; text-align: center;
-            border: 1px solid rgba(200,169,110,0.15);
+            border: 1px solid var(--border);
             position: relative; overflow: hidden;
         }
         .stat-card::before {
             content: '';
             position: absolute; top: -30px; right: -30px;
             width: 80px; height: 80px;
-            background: radial-gradient(circle, rgba(200,169,110,0.15), transparent);
+            background: radial-gradient(circle, rgba(148,163,184,0.1), transparent);
             border-radius: 50%;
         }
         .stat-num {
             font-family: 'Cormorant Garamond', serif;
             font-size: 36px; font-weight: 600;
-            color: var(--gold-light); line-height: 1;
+            color: var(--text-primary); line-height: 1;
         }
         .stat-label {
             font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
-            text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 6px;
+            text-transform: uppercase; color: var(--text-secondary); margin-top: 6px;
         }
 
         /* ── Testimonials ── */
@@ -272,83 +287,86 @@
         .testimonial-slider { display: flex; gap: 14px; transition: transform 0.5s cubic-bezier(0.25,1,0.5,1); }
         .testimonial-card {
             min-width: 100%;
-            background: rgba(255,255,255,0.55);
+            background: var(--glass);
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.7);
+            border: 1px solid var(--border);
             border-radius: 28px; padding: 28px 26px;
-            box-shadow: 0 10px 30px var(--shadow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         .testi-stars { color: var(--gold); font-size: 13px; letter-spacing: 2px; margin-bottom: 12px; }
         .testi-quote {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 18px; line-height: 1.6; color: var(--ink);
+            font-size: 18px; line-height: 1.6; color: var(--text-primary);
             font-style: italic; margin-bottom: 16px;
         }
         .testi-author { display: flex; align-items: center; gap: 12px; }
         .testi-avatar {
             width: 38px; height: 38px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--forest), var(--sage));
+            /* Avatar gradient match */
+            background: linear-gradient(135deg, var(--forest), #0b2149);
             display: flex; align-items: center; justify-content: center;
-            font-size: 14px; font-weight: 700; color: var(--gold-light);
+            font-size: 14px; font-weight: 700; color: var(--text-primary);
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .testi-name { font-size: 13px; font-weight: 700; color: var(--ink); }
-        .testi-tag { font-size: 11px; color: #7a9693; font-weight: 400; }
+        .testi-tag { font-size: 11px; color: var(--text-secondary); font-weight: 400; }
 
         .slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
-        .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(10,61,53,0.2); cursor: pointer; transition: 0.3s; }
-        .dot.active { background: var(--gold); width: 20px; border-radius: 10px; }
+        .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(148,163,184,0.2); cursor: pointer; transition: 0.3s; }
+        .dot.active { background: var(--text-accent); width: 20px; border-radius: 10px; }
 
         /* ── Quiz / Assessment Box ── */
         .quiz-box {
-            background: linear-gradient(150deg, var(--deep) 0%, #0e2e28 100%);
+            /* Updated gradient for dark depth */
+            background: linear-gradient(150deg, var(--deep) 0%, #0d1a33 100%);
             border-radius: 36px; padding: 44px 32px; text-align: center;
-            border: 1px solid rgba(200,169,110,0.18);
-            box-shadow: 0 30px 60px rgba(6,20,18,0.25);
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
             margin: 32px 0; position: relative; overflow: hidden;
         }
         .quiz-box::before {
             content: ''; position: absolute;
             width: 250px; height: 250px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(200,169,110,0.08), transparent);
+            background: radial-gradient(circle, rgba(148,163,184,0.06), transparent);
             top: -80px; right: -80px;
         }
         .quiz-box h4 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 30px; font-weight: 600; color: var(--cream);
+            font-size: 30px; font-weight: 600; color: var(--text-primary);
             margin-bottom: 10px; position: relative;
         }
-        .quiz-box p { font-size: 14px; color: rgba(255,255,255,0.5); font-weight: 300; margin-bottom: 22px; }
+        .quiz-box p { font-size: 14px; color: var(--text-secondary); font-weight: 300; margin-bottom: 22px; }
 
         .btn-quiz {
-            background: transparent; border: 1.5px solid var(--gold); color: var(--gold);
+            background: transparent; border: 1.5px solid var(--text-accent); color: var(--text-accent);
             padding: 16px 36px; border-radius: 100px; font-weight: 700;
             font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
             cursor: pointer; transition: all 0.3s; width: 100%;
         }
         .btn-quiz:hover {
-            background: var(--gold); color: var(--deep);
-            box-shadow: 0 8px 24px rgba(200,169,110,0.3);
+            background: var(--text-accent); color: var(--deep);
+            box-shadow: 0 8px 24px rgba(148,163,184,0.2);
         }
 
         /* ── FAQ ── */
         .faq-item {
-            background: rgba(255,255,255,0.5);
+            background: var(--glass);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.6);
+            border: 1px solid var(--border);
             border-radius: 22px; margin-bottom: 12px;
             overflow: hidden; cursor: pointer;
             transition: background 0.3s;
         }
-        .faq-item:hover { background: rgba(255,255,255,0.75); }
+        .faq-item:hover { background: rgba(148,163,184,0.1); }
         .faq-q {
             padding: 20px 22px;
             display: flex; justify-content: space-between; align-items: center;
             font-size: 14px; font-weight: 600; color: var(--ink);
         }
-        .faq-q i { color: var(--gold); transition: transform 0.3s; font-size: 12px; }
+        .faq-q i { color: var(--gold-light); transition: transform 0.3s; font-size: 12px; }
         .faq-a {
             display: none; padding: 0 22px 20px;
-            font-size: 13px; color: #607d7b; line-height: 1.7; font-weight: 400;
+            font-size: 13px; color: var(--text-secondary); line-height: 1.7; font-weight: 400;
         }
         .faq-item.open .faq-q i { transform: rotate(180deg); }
         .faq-item.open .faq-a { display: block; }
@@ -362,12 +380,12 @@
         .form-section {
             background: var(--cream);
             border-radius: 44px; padding: 44px 30px;
-            box-shadow: 0 40px 80px var(--shadow);
-            border: 1px solid #ece9e2;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+            border: 1px solid rgba(148,163,184,0.1);
         }
         .form-back {
             border: none; background: none;
-            color: #94a3b8; cursor: pointer;
+            color: var(--text-secondary); cursor: pointer;
             font-size: 12px; font-weight: 700; letter-spacing: 1px;
             text-transform: uppercase; margin-bottom: 24px;
             display: flex; align-items: center; gap: 8px;
@@ -375,20 +393,21 @@
         .form-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 34px; font-weight: 600; font-style: italic;
-            color: var(--ink); text-align: center; margin-bottom: 6px;
+            color: var(--text-primary); text-align: center; margin-bottom: 6px;
         }
-        .form-sub { text-align: center; font-size: 12px; color: var(--sage); font-weight: 700; letter-spacing: 0.5px; margin-bottom: 30px; }
+        .form-sub { text-align: center; font-size: 12px; color: var(--text-accent); font-weight: 700; letter-spacing: 0.5px; margin-bottom: 30px; }
 
         .field-group { margin-bottom: 18px; }
         .field-label {
             font-size: 10px; font-weight: 700; letter-spacing: 2px;
-            text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; display: block;
+            text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; display: block;
         }
         input, select, textarea {
             width: 100%; padding: 17px 20px;
-            border: 1.5px solid #e8e4dc;
+            /* Updated Input Styling for dark theme */
+            border: 1.5px solid rgba(148,163,184,0.1);
             border-radius: 16px;
-            background: white;
+            background: rgba(255,255,255,0.03);
             font-family: 'DM Sans', sans-serif;
             font-size: 14px;
             color: var(--ink);
@@ -397,21 +416,23 @@
         }
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(200,169,110,0.12);
+            border-color: var(--text-accent);
+            box-shadow: 0 0 0 4px rgba(148,163,184,0.08);
+            background: rgba(255,255,255,0.05);
         }
         textarea { resize: none; }
 
         .special-box {
-            background: rgba(200,169,110,0.05);
-            border: 1.5px solid rgba(200,169,110,0.2);
+            background: rgba(148,163,184,0.03);
+            border: 1.5px solid rgba(148,163,184,0.1);
             border-radius: 20px; padding: 20px;
             margin-bottom: 18px; display: none;
         }
 
         .btn-main {
             width: 100%; padding: 20px;
-            background: #075e54; color: var(--cream);
+            /* Update to match theme or keep WhatsApp green for recognition */
+            background: #0d4a43; color: var(--text-primary);
             border: none; border-radius: 18px;
             font-family: 'DM Sans', sans-serif;
             font-size: 15px; font-weight: 700; letter-spacing: 0.5px;
@@ -420,36 +441,37 @@
         }
         .btn-main:hover {
             transform: translateY(-3px);
-            box-shadow: 0 16px 40px rgba(7,94,84,0.28);
-            background: #128c7e;
+            box-shadow: 0 16px 40px rgba(13,74,67,0.3);
+            background: #106359;
         }
-        .form-note { text-align: center; font-size: 10px; color: #b0b8c1; margin-top: 14px; letter-spacing: 1.5px; text-transform: uppercase; }
+        .form-note { text-align: center; font-size: 10px; color: var(--text-secondary); margin-top: 14px; letter-spacing: 1.5px; text-transform: uppercase; }
 
         /* ── Quiz Screen ── */
         .quiz-option {
             width: 100%; padding: 20px 24px; margin-bottom: 12px;
-            background: white; border: 1.5px solid #ece9e2;
+            /* Updated Input Option Styling */
+            background: rgba(255,255,255,0.03); border: 1.5px solid rgba(148,163,184,0.1);
             border-radius: 18px; cursor: pointer;
             font-family: 'DM Sans', sans-serif;
-            font-size: 15px; font-weight: 500; color: var(--ink);
+            font-size: 15px; font-weight: 500; color: var(--text-primary);
             text-align: left; display: flex; align-items: center; gap: 14px;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .quiz-option:hover {
-            border-color: var(--gold); background: #fffdf8;
+            border-color: var(--text-accent); background: rgba(148,163,184,0.05);
             transform: translateX(6px);
-            box-shadow: 0 8px 24px var(--shadow);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
-        .quiz-option i { color: var(--gold); font-size: 18px; width: 24px; text-align: center; }
+        .quiz-option i { color: var(--text-accent); font-size: 18px; width: 24px; text-align: center; }
 
         /* ── Success Toast ── */
         .toast {
             position: fixed; bottom: 120px; left: 50%; transform: translateX(-50%) translateY(20px);
-            background: var(--deep); color: var(--cream);
+            background: var(--deep); color: var(--text-primary);
             padding: 14px 28px; border-radius: 100px;
             font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
             display: flex; align-items: center; gap: 10px;
-            border: 1px solid rgba(200,169,110,0.3);
+            border: 1px solid var(--border);
             z-index: 500; opacity: 0;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             pointer-events: none; white-space: nowrap;
@@ -457,28 +479,29 @@
         .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
         .toast i { color: var(--gold); }
 
-        /* ── Bottom Nav ── */
+        /* ── Bottom Nav (Updated for Dark Theme) ── */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(255,255,255,0.88);
+            background: rgba(11, 17, 32, 0.85); /* matching BG */
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             display: flex; justify-content: space-around;
             padding: 14px 0 34px;
-            border-top: 1px solid rgba(0,0,0,0.04);
+            border-top: 1px solid rgba(148,163,184,0.1);
             border-radius: 40px 40px 0 0;
             z-index: 100;
         }
         .nav-btn {
             display: flex; flex-direction: column; align-items: center; gap: 5px;
-            text-decoration: none; color: #b0bec5;
+            text-decoration: none; color: var(--text-secondary);
             font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
             flex: 1; cursor: pointer; border: none; background: none;
             transition: all 0.2s;
         }
         .nav-btn i { font-size: 20px; transition: 0.2s; }
-        .nav-btn:hover, .nav-btn.active { color: var(--sage); }
-        .nav-btn:hover i, .nav-btn.active i { color: var(--sage); transform: translateY(-2px); }
+        .nav-btn:hover, .nav-btn.active { color: var(--text-primary); }
+        .nav-btn:hover i, .nav-btn.active i { color: var(--text-accent); transform: translateY(-2px); }
+        /* Keep WhatsApp brand green */
         .nav-btn.whatsapp:hover, .nav-btn.whatsapp { color: #25d366; }
         .nav-btn.whatsapp i { color: #25d366; }
 
@@ -490,15 +513,15 @@
             font-family: 'DM Sans', sans-serif;
             font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
             cursor: pointer; z-index: 200;
-            box-shadow: 0 8px 30px rgba(200,169,110,0.45);
+            box-shadow: 0 8px 30px rgba(200,169,110,0.3);
             display: flex; align-items: center; gap: 8px;
             animation: pulse-gold 3s infinite;
             transition: transform 0.3s;
         }
         .book-pill:hover { transform: scale(1.05); }
         @keyframes pulse-gold {
-            0%,100% { box-shadow: 0 8px 30px rgba(200,169,110,0.45); }
-            50% { box-shadow: 0 8px 45px rgba(200,169,110,0.7); }
+            0%,100% { box-shadow: 0 8px 30px rgba(200,169,110,0.3); }
+            50% { box-shadow: 0 8px 45px rgba(200,169,110,0.5); }
         }
         .book-pill i { font-size: 12px; }
     </style>
@@ -516,10 +539,8 @@
 
 <div class="container">
 
-    <!-- ══ HOME SCREEN ══ -->
     <div id="home-screen">
 
-        <!-- Bio Card -->
         <div class="bio-card animate delay-1" id="bio-card-el">
             <div class="bio-img-wrap">
                 <img src="new-logo.jpeg" class="bio-img" alt="Abdul Rauf"
@@ -536,7 +557,6 @@
             </div>
         </div>
 
-        <!-- Stats Row -->
         <div class="stats-row animate delay-2">
             <div class="stat-card">
                 <div class="stat-num">500+</div>
@@ -552,7 +572,6 @@
             </div>
         </div>
 
-        <!-- Services -->
         <div class="section-label animate delay-3">Therapeutic Excellence</div>
 
         <div class="service-card animate delay-3" onclick="openBooking('NLP Coaching')">
@@ -585,7 +604,6 @@
             <i class="fas fa-arrow-right svc-arrow"></i>
         </div>
 
-        <!-- Testimonials -->
         <div class="section-label animate delay-5">Client Experiences</div>
         <div class="testimonials-wrap animate delay-5">
             <div class="testimonial-slider" id="tSlider">
@@ -621,14 +639,12 @@
             </div>
         </div>
 
-        <!-- Assessment Box -->
         <div class="quiz-box animate delay-6">
             <h4>Not sure where to start?</h4>
             <p>Take a 60-second assessment to find the right approach for your journey.</p>
             <button class="btn-quiz" onclick="startQuiz()"><i class="fas fa-compass" style="margin-right:8px;"></i>Begin Assessment</button>
         </div>
 
-        <!-- FAQ -->
         <div class="section-label">Questions & Answers</div>
 
         <div class="faq-item" onclick="toggleFaq(this)">
@@ -652,21 +668,17 @@
             <div class="faq-a">Yes — a complimentary 15-minute discovery call is available. Book via WhatsApp or the calendar link to get started at no cost.</div>
         </div>
 
-        <p style="text-align:center; font-size:9px; color:#b0bec5; margin: 60px 0 20px; text-transform:uppercase; letter-spacing:3px; font-weight:700;">
+        <p style="text-align:center; font-size:9px; color:var(--text-secondary); margin: 60px 0 20px; text-transform:uppercase; letter-spacing:3px; font-weight:700;">
             AIMS · Abdulrauf Institute of Mind Sciences
         </p>
 
-    </div><!-- /home-screen -->
-
-
-    <!-- ══ QUIZ SCREEN ══ -->
-    <div id="quiz-screen" class="form-section" style="display:none; opacity:0;">
+    </div><div id="quiz-screen" class="form-section" style="display:none; opacity:0;">
         <button class="form-back" onclick="showHome()"><i class="fas fa-arrow-left"></i> Back</button>
         <div class="form-title">Find Your Path</div>
         <p class="form-sub">Answer a few questions to get a personalised recommendation</p>
 
         <div id="quiz-step-1">
-            <p style="font-weight:600; font-size:14px; color:#607d7b; margin-bottom:16px; letter-spacing:0.3px;">What is your primary goal right now?</p>
+            <p style="font-weight:600; font-size:14px; color:var(--text-secondary); margin-bottom:16px; letter-spacing:0.3px;">What is your primary goal right now?</p>
             <button class="quiz-option" onclick="quizStep2('habit')"><i class="fas fa-link-slash"></i> Break a habit or overcome a fear</button>
             <button class="quiz-option" onclick="quizStep2('performance')"><i class="fas fa-chart-line"></i> Improve performance & confidence</button>
             <button class="quiz-option" onclick="quizStep2('emotional')"><i class="fas fa-heart"></i> Process emotions or past trauma</button>
@@ -674,7 +686,7 @@
         </div>
 
         <div id="quiz-step-2" style="display:none;">
-            <p style="font-weight:600; font-size:14px; color:#607d7b; margin-bottom:16px;">How long have you been dealing with this?</p>
+            <p style="font-weight:600; font-size:14px; color:var(--text-secondary); margin-bottom:16px;">How long have you been dealing with this?</p>
             <button class="quiz-option" onclick="quizFinish()"><i class="fas fa-clock"></i> Just recently (weeks)</button>
             <button class="quiz-option" onclick="quizFinish()"><i class="fas fa-calendar-alt"></i> A few months</button>
             <button class="quiz-option" onclick="quizFinish()"><i class="fas fa-hourglass-end"></i> Years or more</button>
@@ -682,7 +694,6 @@
     </div>
 
 
-    <!-- ══ BOOKING SCREEN ══ -->
     <div id="booking-screen" class="form-section" style="display:none; opacity:0;">
         <button class="form-back" onclick="showHome()"><i class="fas fa-arrow-left"></i> Back</button>
         <div class="form-title" id="booking-title">Secure Your Slot</div>
@@ -692,244 +703,228 @@
 
         <div class="field-group">
             <label class="field-label">Full Name</label>
-            <input type="text" id="f-name" placeholder="E.g. Ahmad Khan">
+            <input type="text" id="b-name" placeholder="E.g., Sarah Khan">
         </div>
 
         <div class="field-group">
             <label class="field-label">WhatsApp Number</label>
-            <input type="tel" id="f-phone" placeholder="03XXXXXXXXX">
-        </div>
-
-        <div class="special-box" id="special-box">
-            <label class="field-label" id="special-label" style="color: var(--sage);">Follow-up Question</label>
-            <input type="text" id="f-extra" placeholder="Your answer..." style="margin-top:10px; margin-bottom:0;">
+            <input type="tel" id="b-phone" placeholder="+92 300 1234567">
         </div>
 
         <div class="field-group">
-            <label class="field-label">Preferred Session Mode</label>
-            <select id="f-mode">
-                <option value="Online (Video Call)">Online (Video Call)</option>
-                <option value="In-Person (Clinic)">In-Person (Clinic)</option>
+            <label class="field-label">Preferred Session Type</label>
+            <select id="b-type" onchange="checkSpecial()">
+                <option value="Online (Zoom/Video Call)">Online (Zoom/Video Call)</option>
+                <option value="In-Person (Lahore Clinic)">In-Person (Lahore Clinic)</option>
             </select>
         </div>
 
-        <div class="field-group">
-            <label class="field-label">Describe Your Concern</label>
-            <textarea id="f-goal" rows="3" placeholder="Briefly describe what you'd like to change or achieve..."></textarea>
+        <div class="special-box" id="special-note">
+            <i class="fas fa-info-circle" style="color:var(--gold); margin-right:8px;"></i>
+            <span style="font-size:12px; color:var(--text-secondary); line-height:1.4;">Hypnotherapy is generally most effective in-person, but online sessions are available and highly successful.</span>
         </div>
 
-        <button class="btn-main" onclick="submitBooking()" id="submit-btn">
-            <i class="fab fa-whatsapp"></i> Confirm via WhatsApp
-        </button>
-        <p class="form-note">Your details will be sent directly to Abdul Rauf on WhatsApp</p>
+        <div class="field-group">
+            <label class="field-label">Briefly describe what you'd like help with</label>
+            <textarea id="b-msg" rows="4" placeholder="E.g., Looking to manage work anxiety..."></textarea>
+        </div>
+
+        <button class="btn-main" onclick="sendWhatsApp()"><i class="fab fa-whatsapp"></i> Book via WhatsApp</button>
+        <p class="form-note">Response within 3 hours</p>
     </div>
 
-</div><!-- /container -->
+</div><button class="book-pill animate delay-6" onclick="openBooking('General Consultation')"><i class="fas fa-calendar-alt"></i> Book Session</button>
 
-
-<!-- ══ FLOATING BOOK BUTTON ══ -->
-<button class="book-pill" id="book-pill" onclick="openBooking('General Consultation')">
-    <i class="fas fa-calendar-plus"></i> Book Now
-</button>
-
-<!-- ══ BOTTOM NAV ══ -->
-<div class="bottom-nav">
-    <button class="nav-btn active" onclick="showHome()"><i class="fas fa-home"></i>Home</button>
-    <a href="tel:923005364319" class="nav-btn"><i class="fas fa-phone-alt"></i>Call</a>
-    <a href="https://wa.me/923005364319" class="nav-btn whatsapp"><i class="fab fa-whatsapp"></i>WhatsApp</a>
-</div>
+<nav class="bottom-nav">
+    <button class="nav-btn active" onclick="showHome()">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </button>
+    <button class="nav-btn" onclick="openBooking('General Consultation')">
+        <i class="fas fa-calendar-check"></i>
+        <span>Book</span>
+    </button>
+    <button class="nav-btn" onclick="startQuiz()">
+        <i class="fas fa-compass"></i>
+        <span>Path</span>
+    </button>
+    <a href="https://wa.me/923004731215" class="nav-btn whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat</span>
+    </a>
+</nav>
 
 
 <script>
-    // ── Replace these with your real links ──
-    const CALENDLY_URL = "https://calendly.com/YOUR-LINK-HERE";
-    const SHEETS_URL   = "https://script.google.com/macros/s/AKfycbxqgxPJXnGiVndINcc8OoeuKAtDx5VYd0iasv0LvxAeK16p2Eg_NgurUKVlbouH3zVWNQ/exec";
-
-    // ── Custom Cursor ──
+    // ── Custom Cursor Logic ──
     const dot = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => {
-        mx = e.clientX; my = e.clientY;
-        dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+    
+    document.addEventListener('mousemove', (e) => {
+        dot.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+        // Slight delay on the ring for smooth effect
+        requestAnimationFrame(() => {
+            ring.style.transform = `translate(${e.clientX - 16}px, ${e.clientY - 16}px)`;
+        });
     });
-    (function animRing() {
-        rx += (mx - rx) * 0.12;
-        ry += (my - ry) * 0.12;
-        ring.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
-        requestAnimationFrame(animRing);
-    })();
-    document.querySelectorAll('button, a, .service-card, .faq-item').forEach(el => {
+
+    // Cursor interactions on hoverable elements
+    const hoverables = document.querySelectorAll('button, a, .service-card, .faq-item, .quiz-option, input, select, textarea');
+    hoverables.forEach(el => {
         el.addEventListener('mouseenter', () => {
-            ring.style.width = '50px'; ring.style.height = '50px';
-            ring.style.opacity = '0.3';
+            ring.style.width = '50px';
+            ring.style.height = '50px';
+            ring.style.transform = `translate(${event.clientX - 25}px, ${event.clientY - 25}px)`; // Re-center
+            ring.style.opacity = '0.8';
+            ring.style.borderColor = el.classList.contains('whatsapp') ? '#25d366' : 'var(--gold)';
         });
         el.addEventListener('mouseleave', () => {
-            ring.style.width = '32px'; ring.style.height = '32px';
+            ring.style.width = '32px';
+            ring.style.height = '32px';
             ring.style.opacity = '0.5';
+            ring.style.borderColor = 'var(--gold)';
         });
     });
 
-    // ── Parallax on Bio Card ──
-    const bioEl = document.getElementById('bio-card-el');
-    document.addEventListener('mousemove', e => {
-        const x = (window.innerWidth / 2 - e.pageX) / 50;
-        const y = (window.innerHeight / 2 - e.pageY) / 50;
-        bioEl.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-    });
 
-    // ── Testimonial Slider ──
-    let curSlide = 0;
-    const slides = document.querySelectorAll('.testimonial-card');
-    const dots = document.querySelectorAll('.dot');
-    function goSlide(n) {
-        curSlide = n;
-        document.getElementById('tSlider').style.transform = `translateX(calc(-${n * 100}% - ${n * 14}px))`;
-        dots.forEach((d, i) => d.classList.toggle('active', i === n));
-    }
-    setInterval(() => goSlide((curSlide + 1) % slides.length), 5000);
+    // ── Screen Management ──
+    const homeScr = document.getElementById('home-screen');
+    const quizScr = document.getElementById('quiz-screen');
+    const bookScr = document.getElementById('booking-screen');
+    const bookPill = document.querySelector('.book-pill');
+    const navBtns = document.querySelectorAll('.nav-btn');
 
-    // ── FAQ ──
-    function toggleFaq(el) {
-        const isOpen = el.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
-        if (!isOpen) el.classList.add('open');
-    }
-
-    // ── Toast ──
-    function showToast(msg) {
-        const t = document.getElementById('toast');
-        document.getElementById('toast-msg').textContent = msg;
-        t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 3000);
-    }
-
-    // ── Screen Transitions ──
-    function fadeIn(el) {
-        el.style.display = 'block';
-        el.style.opacity = '0';
-        requestAnimationFrame(() => { requestAnimationFrame(() => { el.style.opacity = '1'; }); });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function fadeOut(el, cb) {
-        el.style.opacity = '0';
-        setTimeout(() => { el.style.display = 'none'; if (cb) cb(); }, 400);
-    }
-
-    function showHome() {
-        ['quiz-screen','booking-screen'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el.style.display !== 'none') fadeOut(el);
+    function hideAllScreens() {
+        [homeScr, quizScr, bookScr].forEach(scr => {
+            scr.style.opacity = '0';
+            setTimeout(() => scr.style.display = 'none', 400);
         });
-        const home = document.getElementById('home-screen');
-        home.style.display = 'block';
-        home.style.opacity = '1';
-        document.getElementById('book-pill').style.display = 'flex';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        bookPill.style.display = 'none';
+        navBtns.forEach(btn => btn.classList.remove('active'));
     }
 
-    function openBooking(serviceName, fromQuiz = false) {
-        const home = document.getElementById('home-screen');
-        const booking = document.getElementById('booking-screen');
-        fadeOut(home, () => {
-            document.getElementById('booking-title').textContent = serviceName;
-            document.getElementById('h-service').value = serviceName;
-            document.getElementById('booking-sub').textContent = fromQuiz ? '✦ Recommended based on your assessment' : '';
-            document.getElementById('book-pill').style.display = 'none';
+    function showScreen(scr, navIndex) {
+        hideAllScreens();
+        setTimeout(() => {
+            scr.style.display = 'block';
+            setTimeout(() => scr.style.opacity = '1', 50);
+            if(scr === homeScr) bookPill.style.display = 'flex';
+            if(navIndex !== null) navBtns[navIndex].classList.add('active');
+            window.scrollTo(0, 0);
+        }, 400);
+    }
 
-            const sb = document.getElementById('special-box');
-            const sl = document.getElementById('special-label');
-            if (serviceName === 'Hypnotherapy') {
-                sb.style.display = 'block'; sl.textContent = 'Have you experienced hypnosis before?';
-            } else if (serviceName === 'NLP Coaching') {
-                sb.style.display = 'block'; sl.textContent = 'What is your main mental challenge?';
-            } else if (serviceName === 'Psychotherapy') {
-                sb.style.display = 'block'; sl.textContent = 'Is this your first time in therapy?';
-            } else { sb.style.display = 'none'; }
+    function showHome() { showScreen(homeScr, 0); }
 
-            fadeIn(booking);
-        });
+    // ── Service Booking Logic ──
+    function openBooking(serviceName) {
+        showScreen(bookScr, 1);
+        document.getElementById('booking-title').innerText = serviceName;
+        document.getElementById('booking-sub').innerText = "Complete details below to request your " + serviceName + " session.";
+        document.getElementById('h-service').value = serviceName;
+        checkSpecial();
+    }
+
+    function checkSpecial() {
+        const svc = document.getElementById('h-service').value;
+        const type = document.getElementById('b-type').value;
+        const note = document.getElementById('special-note');
+        if (svc === 'Hypnotherapy' && type.includes('Online')) {
+            note.style.display = 'block';
+        } else {
+            note.style.display = 'none';
+        }
     }
 
     // ── Quiz Logic ──
-    let quizGoal = '';
     function startQuiz() {
-        const home = document.getElementById('home-screen');
-        fadeOut(home, () => {
-            document.getElementById('quiz-step-1').style.display = 'block';
-            document.getElementById('quiz-step-2').style.display = 'none';
-            fadeIn(document.getElementById('quiz-screen'));
-        });
+        showScreen(quizScr, 2);
+        document.getElementById('quiz-step-1').style.display = 'block';
+        document.getElementById('quiz-step-2').style.display = 'none';
     }
 
     function quizStep2(goal) {
-        quizGoal = goal;
+        window.quizGoal = goal;
         document.getElementById('quiz-step-1').style.display = 'none';
         document.getElementById('quiz-step-2').style.display = 'block';
     }
 
     function quizFinish() {
-        const map = {
-            'habit': 'Hypnotherapy',
-            'performance': 'NLP Coaching',
-            'emotional': 'Psychotherapy',
-            'stress': 'Psychotherapy'
-        };
-        const service = map[quizGoal] || 'Hypnotherapy';
-        fadeOut(document.getElementById('quiz-screen'), () => openBooking(service, true));
+        let recommendation = "General Consultation";
+        let recSub = "Based on your needs, a primary consultation is the best place to start.";
+        
+        if (window.quizGoal === 'habit' || window.quizGoal === 'stress') {
+            recommendation = "Hypnotherapy";
+            recSub = "Hypnotherapy is excellent for rapid habit change and deep emotional calm.";
+        } else if (window.quizGoal === 'performance') {
+            recommendation = "NLP Coaching";
+            recSub = "NLP is ideal for mindset shifting, confidence building and performance.";
+        } else if (window.quizGoal === 'emotional') {
+            recommendation = "Psychotherapy";
+            recSub = "Clinical psychotherapy provides structured support for emotional healing.";
+        }
+
+        openBooking(recommendation);
+        document.getElementById('booking-title').innerText = "Recommendation: " + recommendation;
+        document.getElementById('booking-sub').innerText = recSub;
+        showToast("Path found! Based on your answers.");
     }
 
-    // ── Submit via WhatsApp ──
-    async function submitBooking() {
-        const name    = document.getElementById('f-name').value.trim();
-        const phone   = document.getElementById('f-phone').value.trim();
+    // ── FAQ Toggle ──
+    function toggleFaq(item) {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    }
+
+    // ── Testimonial Slider ──
+    let currentSlide = 0;
+    const slider = document.getElementById('tSlider');
+    const dots = document.getElementById('sliderDots').children;
+
+    function goSlide(index) {
+        currentSlide = index;
+        slider.style.transform = `translateX(-${index * 100}%)`;
+        Array.from(dots).forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+    }
+
+    // Auto slide
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % 3;
+        goSlide(currentSlide);
+    }, 8000);
+
+    // ── Toast Logic ──
+    function showToast(msg) {
+        const toast = document.getElementById('toast');
+        document.getElementById('toast-msg').innerText = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3500);
+    }
+
+    // ── WhatsApp Send ──
+    function sendWhatsApp() {
+        const name = document.getElementById('b-name').value;
+        const phone = document.getElementById('b-phone').value;
+        const type = document.getElementById('b-type').value;
+        const msg = document.getElementById('b-msg').value;
         const service = document.getElementById('h-service').value;
-        const mode    = document.getElementById('f-mode').value;
-        const goal    = document.getElementById('f-goal').value.trim();
-        const extra   = document.getElementById('f-extra').value.trim() || 'N/A';
 
-        if (!name || !phone) {
-            showToast('Please fill in your name and phone number');
-            return;
-        }
-        if (!/^0[0-9]{10}$/.test(phone)) {
-            showToast('Please enter a valid 11-digit number');
-            return;
-        }
+        if(!name || !phone) { alert("Please fill Name and WhatsApp number."); return; }
 
-        const btn = document.getElementById('submit-btn');
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening WhatsApp...';
-        btn.disabled = true;
+        const text = `New Booking Request from Website:%0A%0A` +
+                     `*Service:* ${service}%0A` +
+                     `*Name:* ${name}%0A` +
+                     `*WhatsApp:* ${phone}%0A` +
+                     `*Type:* ${type}%0A` +
+                     `*Message:* ${msg}`;
 
-        // Also log to Google Sheets silently
-        try {
-            fetch(SHEETS_URL, {
-                method: 'POST', mode: 'no-cors',
-                body: JSON.stringify({ service, name, phone, mode, goal, extra })
-            });
-        } catch(e) {}
-
-        // Build a clean, professional WhatsApp message
-        const msg = [
-            `🌿 *New Session Request — AIMS*`,
-            ``,
-            `*Name:* ${name}`,
-            `*Phone:* ${phone}`,
-            `*Service:* ${service}`,
-            `*Mode:* ${mode}`,
-            `*Concern:* ${goal || 'Not specified'}`,
-            `*Extra:* ${extra}`,
-            ``,
-            `_Sent via AIMS website_`
-        ].join('\n');
-
-        const waURL = `https://wa.me/923005364319?text=${encodeURIComponent(msg)}`;
-
-        setTimeout(() => {
-            showToast('Redirecting to WhatsApp...');
-            setTimeout(() => { window.location.href = waURL; }, 1200);
-        }, 500);
+        window.open(`https://wa.me/923004731215?text=${text}`, '_blank');
+        showToast("Request sent via WhatsApp!");
+        setTimeout(showHome, 1000);
     }
 </script>
+
 </body>
 </html>
